@@ -35,6 +35,9 @@ RUN echo 'export CUDNN_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn
 RUN pip install git+https://github.com/NVIDIA/TransformerEngine.git@release_v1.3
 RUN pip install pybind11
 
+# Install requirements for DeepSpeed
+RUN pip install deepspeed==0.12.6
+
 # Install requirements
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
