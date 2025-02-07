@@ -48,7 +48,7 @@ cd Mist
 docker build -t mist -f Dockerfile .
 ```
 
-## Step 2: Kick-the-Tires (Functionality Test)
+## Step 2: Kick-the-Tires (Functionality Test, Est. Time: 10 mins)
 
 ### Step 2.1: Run the docker container
 ```bash
@@ -140,7 +140,7 @@ Total Latency: 9.9345
 Therefore, the speedup is roughly ~14%. This is the datapoint in (Figure 11, (a) - 1).
 
 
-## Step 3: Run Single-Node Performance Evaluation [Specifically for GCP L4 GPUs]
+## Step 3: Run Single-Node Performance Evaluation [Specifically for GCP L4 GPUs] (Est. Time: 3.5 hours)
 
 For L4 GPUs, we directly provide the configurations that are tuned by us that can be used to quickly test the speedup of Mist compared to baselines. We also provide a general process for evaluating on a brand new cluster. See the next section.
 
