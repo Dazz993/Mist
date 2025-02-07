@@ -229,6 +229,8 @@ cd /workspace/benchmark/mist/benchmark-tuning-time
 python run.py --model=gpt2/22b -n 4 -m 8
 ```
 
+The results are under `/workspace/benchmark/mist/benchmark-tuning-time/results`.
+
 ## Run Single-Node Performance Evaluation for General Cases [Not for AE]
 
 ### Profile Networking and Overlap Params [Est. Time: 50mins for 8xL4s]
