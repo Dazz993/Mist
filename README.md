@@ -17,8 +17,6 @@ Non Goals ⚠️:
 
 **We provide one GCP L4 machine with 8 NVIDIA L4 GPUs for the AE reviewers to reproduce our results. Please contact the authors for server access.**
 
-## Overall Workflow
-
 ## Prerequisite (Skip for AE Reviewers)
 
 We recommend to use Docker Engine for building the artifact to fully control all software dependencies. Please follow the instructions to Install [Docker Engine](https://docs.docker.com/engine/install/) and [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit) first. Note that if the current user is not in the docker user group, all following docker-related commands requires root privilege (i.e. with sudo) to run. 
@@ -311,3 +309,11 @@ Take a look at `3-1-tune_22b_8_a10_4_nodes.sh` and `3-2-exec_22b_8_a10_4_nodes.s
 ### Known Benchmarking Issues
 
 - It is annoying that during the multi-node testing, there may be cases where only one or several machines are down because of OOM errors while others are still running. Although we have tried our best to cover this for smooth benchmarking, there may still be idling situation and it requires manual monitoring.
+
+
+## More information
+For AE reviewers, please contact the authors through [HotCRP](https://eurosys25-ae-fall.hotcrp.com/) for any questions. For other users, please open an issue publicly or contact Zhanda (zhandazhu@gmail.com) for any technical questions.
+
+## Reference
+
+[slapo-artifact](https://github.com/chhzh123/slapo-artifact)
