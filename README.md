@@ -15,8 +15,6 @@ Non Goals ⚠️:
 - Production: Mist is a research prototype built on PyTorch to explore distributed training optimizations. Certain production features like dynamic gradient scaling, gradient clipping, and training monitoring are intentionally omitted. For production use, we recommend applying Mist’s optimized strategies in [Megatron-LM](https://github.com/NVIDIA/Megatron-LM/) and [DeepSpeed](https://github.com/microsoft/deepspeed). We also disabled these features for baselines for fair performance comparison.
 - Numeric Stability: even though we tried our best to make sure the execution is correct and tested the correctness for several base cases, numerical instabilities may arise due to complex overlap scheduling and data race conditions in complicated configurations. We are happy to further improve it once we spot these cases.
 
-**We provide one GCP L4 machine with 8 NVIDIA L4 GPUs for the AE reviewers to reproduce our results. Please contact the authors for server access.**
-
 ## Prerequisite (Skip for AE Reviewers)
 
 We recommend to use Docker Engine for building the artifact to fully control all software dependencies. Please follow the instructions to Install [Docker Engine](https://docs.docker.com/engine/install/) and [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-container-toolkit) first. Note that if the current user is not in the docker user group, all following docker-related commands requires root privilege (i.e. with sudo) to run. 
