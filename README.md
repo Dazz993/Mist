@@ -15,7 +15,7 @@ Non Goals ⚠️:
 - Production: Mist is a research prototype built on PyTorch to explore distributed training optimizations. Certain production features like dynamic gradient scaling, gradient clipping, and training monitoring are intentionally omitted. For production use, we recommend applying Mist’s optimized strategies in [Megatron-LM](https://github.com/NVIDIA/Megatron-LM/) and [DeepSpeed](https://github.com/microsoft/deepspeed). We also disabled these features for baselines for fair performance comparison.
 - Numeric Stability: even though we tried our best to make sure the execution is correct and tested the correctness for several base cases, numerical instabilities may arise due to complex overlap scheduling and data race conditions in complicated configurations. We are happy to further improve it once we spot these cases.
 
-**As our experiment requires at least a machine with 8 x L4 GPUs, we provide two GCP L4 machines each with 8 NVIDIA L4 GPUs for the AE reviewers to reproduce our results. Please contact the authors for server access.**
+**We provide one GCP L4 machine with 8 NVIDIA L4 GPUs for the AE reviewers to reproduce our results. Please contact the authors for server access.**
 
 ## Overall Workflow
 
