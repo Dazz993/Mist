@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(1, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00011151360049843787,
+      0.00011161600053310394,
+      3.072001039981849e-07
+    ],
+    "bwd": [
+      0.003720703959465027,
+      0.003720703959465027,
+      5.8332503278970905e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(2, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0002172928035259247,
+      0.0002170879989862442,
+      7.662924887372013e-07
+    ],
+    "bwd": [
+      0.003884953618049621,
+      0.003885568022727966,
+      4.724883386495652e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(4, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0004279296040534973,
+      0.0004280320107936859,
+      7.167960916625895e-07
+    ],
+    "bwd": [
+      0.0041716735839843755,
+      0.004170752048492431,
+      3.0186826408783182e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(8, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0008734719932079315,
+      0.0008734719753265381,
+      9.158804258319574e-07
+    ],
+    "bwd": [
+      0.004848435306549072,
+      0.004847616195678711,
+      4.039216599906514e-06
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - /model/t5/common.yaml
+  - _self_
+
+model:
+  name: t5-40b
+  hidden_size: 8192
+  intermediate_size: 32768
+  num_hidden_layers: 24
+  num_attention_heads: 64

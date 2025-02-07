@@ -1,0 +1,182 @@
+{
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(0, 2048, 2048), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.804908834397794e-05,
+      7.681600004434585e-05,
+      2.843635903773872e-06
+    ],
+    "bwd": [
+      6.265865536406636e-05,
+      6.143999844789505e-05,
+      2.949648019628586e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(0, 2048, 2560), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.767139331251382e-05,
+      7.680000364780426e-05,
+      3.4160039464788376e-06
+    ],
+    "bwd": [
+      6.271251128986477e-05,
+      6.143999844789505e-05,
+      3.1100644366421203e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(0, 2048, 4096), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.965401332825422e-05,
+      7.88479968905449e-05,
+      3.298281996709342e-06
+    ],
+    "bwd": [
+      6.324751926958561e-05,
+      6.246399879455566e-05,
+      5.781628656114075e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.77986252605915e-05,
+      7.680000364780426e-05,
+      3.0001834179372733e-06
+    ],
+    "bwd": [
+      7.12445448562503e-05,
+      6.860800087451935e-05,
+      3.7549786803262654e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(1, 2048, 2560), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.918409429490567e-05,
+      7.782399654388428e-05,
+      6.2985034799393125e-06
+    ],
+    "bwd": [
+      7.04018571525812e-05,
+      6.963200122117996e-05,
+      3.908868833296518e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(1, 2048, 4096), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.952409370988609e-05,
+      7.782399654388428e-05,
+      6.986960871993698e-06
+    ],
+    "bwd": [
+      7.101062531769275e-05,
+      6.963200122117996e-05,
+      5.542712981258758e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.910083121061326e-05,
+      7.782399654388428e-05,
+      4.0451316334688805e-06
+    ],
+    "bwd": [
+      7.236672134697437e-05,
+      7.065600156784058e-05,
+      8.606905858495081e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(2, 2048, 2560), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      7.808732857555152e-05,
+      7.680000364780426e-05,
+      3.7016094197196877e-06
+    ],
+    "bwd": [
+      7.043036893010141e-05,
+      6.860800087451935e-05,
+      9.04019030003558e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(2, 2048, 4096), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.1719040086027233e-06,
+      2.0479999948292972e-06,
+      3.3395436750971437e-07
+    ],
+    "bwd": [
+      0.00039854182308912277,
+      0.00039936000108718874,
+      5.958288987429372e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.172928008716553e-06,
+      2.0479999948292972e-06,
+      3.351407044620036e-07
+    ],
+    "bwd": [
+      0.0004010045426785946,
+      0.00040140798687934875,
+      4.1596041717826855e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(4, 2048, 2560), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.1329920042771843e-06,
+      2.0479999948292972e-06,
+      2.825034259602614e-07
+    ],
+    "bwd": [
+      0.0005319813421368599,
+      0.0005314559936523438,
+      4.709718653518913e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(4, 2048, 4096), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.1504000062122936e-06,
+      2.0479999948292972e-06,
+      3.0720003414899105e-07
+    ],
+    "bwd": [
+      0.0008533452804088593,
+      0.0008529919981956482,
+      6.14263257032904e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.1063680014340202e-06,
+      2.0479999948292972e-06,
+      2.417833189466884e-07
+    ],
+    "bwd": [
+      0.0008524656652212143,
+      0.000851967990398407,
+      5.48598519967762e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(8, 2048, 2560), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.080767998588271e-06,
+      2.0479999948292972e-06,
+      1.8595120224790737e-07
+    ],
+    "bwd": [
+      0.0010704138263463974,
+      0.001070080041885376,
+      6.583907987953138e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(torch.nn.modules.dropout.Dropout [constants] {'p': 0.0, 'inplace': False}, [requires_grad] {}, [dtype] {}), bounded_signature={'input': TensorSpec(shape=(8, 2048, 4096), dtype=torch.float16, requires_grad=True)})": {
+    "fwd": [
+      2.146304005756974e-06,
+      2.0479999948292972e-06,
+      3.0166146557924023e-07
+    ],
+    "bwd": [
+      0.001713388547539711,
+      0.0017131520509719848,
+      8.383030587843531e-06
+    ]
+  }
+}

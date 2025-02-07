@@ -1,0 +1,37 @@
+# @package _global_
+
+defaults:
+  - /model/llama/1.3b
+
+training:
+  max_sequence_length: 2048
+  vocab_size: 32000
+  global_batch_size: 2048
+  params_dtype: float16
+  exec_dtype: float16
+  optimizer_dtype: float32
+  autocast_enabled: false
+  optimizer_name: adamw
+
+hardware:
+  gpu_type: null
+  num_nodes: 8
+  num_gpus_per_node: 8
+  inter_node_gpu_gpu_bandwidth: 600
+  intra_node_gpu_gpu_bandwidth: 600
+  gpu_cpu_bandwidth: 32
+  nvlink: true
+  memory_capacity: 24
+
+strategy:
+  enabled: false
+  layer_partitions: ["${model.num_hidden_layers}"]
+  device_assignment: [["${hardware.num_nodes}", "${hardware.num_gpus_per_node}"]]
+  gradient_accumulation_steps: 32
+  stage_strategies:
+  - [2, 1, 1, 0, 0, 0, 0, 0, 0]
+  pre_post_strategy: heuristic
+
+tuning:
+  enabled: true 
+  pre_post_strategy: heuristic

@@ -1,0 +1,13 @@
+# @package _global_
+
+defaults:
+  - /model/gpt2/common.yaml
+  - _self_
+
+model:
+  name: gpt2-H2048_L144
+  hidden_size: 2048
+  intermediate_size: 8192
+  num_hidden_layers: 144
+  num_attention_heads: 32
+  num_heads_kv: ~

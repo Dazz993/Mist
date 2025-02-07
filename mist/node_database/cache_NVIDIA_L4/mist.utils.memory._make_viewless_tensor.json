@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.utils.memory._make_viewless_tensor), bounded_signature={'inp': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'requires_grad': True, 'keep_graph': True})": {
+    "fwd": [
+      1.2185599841177464e-05,
+      1.1264000087976456e-05,
+      2.1698170153393624e-06
+    ],
+    "bwd": [
+      0.0001231872007250786,
+      0.00011724800243973732,
+      1.699377352159009e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.utils.memory._make_viewless_tensor), bounded_signature={'inp': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'requires_grad': True, 'keep_graph': True})": {
+    "fwd": [
+      2.355200028978288e-06,
+      2.0479999948292972e-06,
+      4.692558033269234e-07
+    ],
+    "bwd": [
+      9.891839995980261e-05,
+      9.369600191712379e-05,
+      1.952164011047672e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.utils.memory._make_viewless_tensor), bounded_signature={'inp': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'requires_grad': True, 'keep_graph': True})": {
+    "fwd": [
+      2.252800017595291e-06,
+      2.0479999948292972e-06,
+      4.09600045531988e-07
+    ],
+    "bwd": [
+      0.00019220480471849441,
+      0.00019251200556755067,
+      1.4517714197291196e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.utils.memory._make_viewless_tensor), bounded_signature={'inp': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'requires_grad': True, 'keep_graph': True})": {
+    "fwd": [
+      2.457600040361285e-06,
+      2.0479999948292972e-06,
+      5.016555550870637e-07
+    ],
+    "bwd": [
+      0.0005734399974346163,
+      0.000572928011417389,
+      2.932289185368387e-06
+    ]
+  }
+}

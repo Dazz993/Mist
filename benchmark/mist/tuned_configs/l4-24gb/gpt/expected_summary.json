@@ -1,0 +1,33 @@
+{
+  "1.3b-s_2048-v_50304-b_32-n_1-m_2-f_False": {
+    "exec_total_cost": "9.6776",
+    "exec_stage_peak_allocated_memories": "[18506 MB, 13406 MB]",
+    "exec_stage_peak_reserved_memories": "[20412 MB, 16116 MB]"
+  },
+  "1.3b-s_2048-v_50304-b_32-n_1-m_2-f_True": {
+    "exec_total_cost": "7.8121",
+    "exec_stage_peak_allocated_memories": "[18357 MB, 13696 MB]",
+    "exec_stage_peak_reserved_memories": "[20310 MB, 16562 MB]"
+  },
+  "2.7b-s_2048-v_50304-b_64-n_1-m_4-f_False": {
+    "exec_total_cost": "21.5082",
+    "exec_stage_peak_allocated_memories": "[19757 MB, 19365 MB, 18871 MB, 15681 MB]",
+    "exec_stage_peak_reserved_memories": "[21974 MB, 20978 MB, 20396 MB, 19204 MB]"
+  },
+  "2.7b-s_2048-v_50304-b_64-n_1-m_4-f_True": {
+    "exec_total_cost": "15.4813",
+    "exec_stage_peak_allocated_memories": "[19607 MB, 15414 MB]",
+    "exec_stage_peak_reserved_memories": "[20824 MB, 17540 MB]"
+  },
+  "7b-s_2048-v_50304-b_128-n_1-m_8-f_False": {
+    "exec_total_cost": "46.1018",
+    "exec_stage_peak_allocated_memories": "[20033 MB, 19329 MB, 18145 MB, 19061 MB]",
+    "exec_stage_peak_reserved_memories": "[21954 MB, 21490 MB, 20278 MB, 21860 MB]"
+  },
+  "7b-s_2048-v_50304-b_128-n_1-m_8-f_True": {
+    "exec_total_cost": "39.2625",
+    "exec_stage_peak_allocated_memories": "[20534 MB, 19767 MB, 18582 MB, 20216 MB]",
+    "exec_stage_peak_reserved_memories": "[22080 MB, 21690 MB, 20788 MB, 21884 MB]"
+  }
+}
+

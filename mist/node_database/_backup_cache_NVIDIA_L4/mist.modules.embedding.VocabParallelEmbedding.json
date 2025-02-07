@@ -1,0 +1,182 @@
+{
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(0, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      2.1975040115648875e-06,
+      2.0479999948292972e-06,
+      3.644692459506381e-07
+    ],
+    "bwd": [
+      0.0034479585690498347,
+      0.003447808027267456,
+      9.92272124630706e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(1, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      6.133865538612008e-05,
+      6.143999844789505e-05,
+      6.968786086560839e-07
+    ],
+    "bwd": [
+      0.0036309974958896635,
+      0.003630079984664917,
+      8.663651597749286e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(2, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00011742553850263357,
+      0.00011776000261306762,
+      9.471785325805407e-07
+    ],
+    "bwd": [
+      0.003672259599208831,
+      0.0036720640659332277,
+      9.085852072887423e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(4, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00022759935876727103,
+      0.00022732800245285034,
+      1.2460763579872958e-06
+    ],
+    "bwd": [
+      0.003847463119983673,
+      0.00384716796875,
+      8.56062483243415e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2048, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(8, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0004500719036624212,
+      0.000449535995721817,
+      2.5396368272453906e-06
+    ],
+    "bwd": [
+      0.004236200691380609,
+      0.004235263824462891,
+      7.078794020685146e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2560, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(0, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      2.176000009058043e-06,
+      2.0479999948292972e-06,
+      3.3865620546199166e-07
+    ],
+    "bwd": [
+      0.0043063715848922724,
+      0.004305920124053955,
+      1.0699740639208155e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2560, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(1, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      7.762243133038282e-05,
+      7.782399654388428e-05,
+      9.693256947781571e-07
+    ],
+    "bwd": [
+      0.004485085198879242,
+      0.004485119819641113,
+      8.897802959823941e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2560, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(2, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00015071581073105336,
+      0.0001505279988050461,
+      1.6180147963892679e-06
+    ],
+    "bwd": [
+      0.004567949450016021,
+      0.004568064212799072,
+      8.646458793481569e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2560, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(4, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0002918892464041709,
+      0.00029183998703956603,
+      1.8902964419874558e-06
+    ],
+    "bwd": [
+      0.00479820131111145,
+      0.00479744005203247,
+      8.469967644918724e-06
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 2560, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(8, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0005755002698669695,
+      0.0005754879713058471,
+      2.5264312189032467e-06
+    ],
+    "bwd": [
+      0.005301381306288993,
+      0.0053012480735778805,
+      1.0072925845889527e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 4096, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(0, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      2.1678080081474033e-06,
+      2.0479999948292972e-06,
+      3.291344090493305e-07
+    ],
+    "bwd": [
+      0.006884951048851013,
+      0.0068853759765625,
+      1.3931167611456814e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 4096, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(1, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00011588208197802304,
+      0.0001157120019197464,
+      1.2642530706470636e-06
+    ],
+    "bwd": [
+      0.007182811171531677,
+      0.0071823358535766605,
+      1.1995799779874573e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 4096, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(2, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00022515356588363646,
+      0.0002252800017595291,
+      1.3737789247577193e-06
+    ],
+    "bwd": [
+      0.007273966588020325,
+      0.00727347183227539,
+      1.2289440981909189e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 4096, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(4, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.00044706099212248805,
+      0.00044646400213241576,
+      1.919927408571045e-06
+    ],
+    "bwd": [
+      0.007662097373648312,
+      0.007661568164825439,
+      1.2321864363269291e-05
+    ]
+  },
+  "NodeSpec(target_spec=NNModuleSpec(mist.modules.embedding.VocabParallelEmbedding [constants] {'num_embeddings': 50304, 'embedding_dim': 4096, 'padding_idx': None, 'max_norm': None, 'norm_type': 2.0, 'scale_grad_by_freq': False, 'sparse': False, 'process_group': None}, [requires_grad] {'weight': True}, [dtype] {'weight': torch.float16}), bounded_signature={'input': TensorSpec(shape=(8, 2048), dtype=torch.int64, requires_grad=False)})": {
+    "fwd": [
+      0.0008846955754254994,
+      0.0008847360014915466,
+      3.442390525364775e-06
+    ],
+    "bwd": [
+      0.00842915032035426,
+      0.008428544044494628,
+      1.2614409737211387e-05
+    ]
+  }
+}

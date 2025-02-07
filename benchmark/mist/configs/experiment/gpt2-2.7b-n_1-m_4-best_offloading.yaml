@@ -1,0 +1,71 @@
+# @package _global_
+
+defaults:
+  - /model/gpt2/2.7b
+
+training:
+  max_sequence_length: 2048
+  vocab_size: 50304
+  global_batch_size: 32
+  params_dtype: float16
+  exec_dtype: float16
+  optimizer_dtype: float32
+  autocast_enabled: false
+  optimizer_name: adamw
+
+hardware:
+  gpu_type: null
+  num_nodes: 1
+  num_gpus_per_node: 4
+  inter_node_gpu_gpu_bandwidth: 2.0
+  intra_node_gpu_gpu_bandwidth: 4.3798
+  gpu_cpu_bandwidth: 4
+  nvlink: false
+  memory_capacity: 22.488
+
+strategy:
+  enabled: true
+  layer_partitions: [16, 16]
+  device_assignment: [[1, 2], [1, 2]]
+  gradient_checkpointing: [0, 0]
+  gradient_accumulation_steps: 16
+  stage_strategies:
+  - [1, 2, 1, 0, 0, 1, 0, 0, 0, 0]
+  - [1, 2, 1, 0, 0, 1, 0, 0, 0, 0]
+  pre_post_strategy: preset
+  pre_post_strategy_array: [1, 2, 1, 0, 0, 1, 0, 0, 0, 0]
+
+
+tuning:
+  enabled: true
+  tuning_granularity: uniform-pp   # no-pp, uniform-pp, uniform-device-pp, inter-stage
+  # activation_checkpointing_tuning_enabled: false
+  # state_offloading_enabled: false
+  # activation_offloading_enabled: false
+  activation_checkpointing_tuning_enabled: true
+  state_offloading_enabled: true
+  activation_offloading_enabled: true
+  # pre_post_strategy: "${strategy.pre_post_strategy}"
+  # pre_post_strategy_array: "${strategy.pre_post_strategy_array}"
+  pre_post_strategy: dp   # ["dp", "intra-node-tp-with-ore", "intra-node-tp-without-ore"]
+  pre_post_strategy_array: null
+
+use_memory_buffer: true
+
+# The following are just for benchmarking
+# Whether to use optimizer
+use_optim: true
+# Whether use ReSwap optimizer
+use_re_swap_optim: true
+# Which optimizer to use if enable_re_swap is false
+optim_impl_if_not_re_swap: apex
+# Whether to use zero if not re-swap
+use_zero_if_not_re_swap: false
+
+overlap: true
+cpu_optim_step: false
+cpu_accumu_grad: false
+
+profile: false
+tiny_bench: true
+memory_debug: false

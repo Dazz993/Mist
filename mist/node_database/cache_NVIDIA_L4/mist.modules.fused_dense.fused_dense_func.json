@@ -1,0 +1,242 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.00042137599885463717,
+      0.00041420800983905796,
+      2.125016154280227e-05
+    ],
+    "bwd": [
+      0.000841216003894806,
+      0.0008407040238380433,
+      1.4953550919099896e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(50304, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.007654502391815185,
+      0.007654911994934082,
+      1.8573622018479352e-06
+    ],
+    "bwd": [
+      0.015088844871520995,
+      0.015087615966796876,
+      2.8890916801681656e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(6144, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0009861119985580444,
+      0.0009861119985580444,
+      6.476393962108335e-07
+    ],
+    "bwd": [
+      0.0019365887641906738,
+      0.0019363839626312257,
+      8.927093011143956e-07
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(8192, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0012665855884552001,
+      0.0012666879892349243,
+      5.514450751934787e-07
+    ],
+    "bwd": [
+      0.00253265917301178,
+      0.0025323519706726074,
+      9.216070175171055e-07
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(1, 2048, 8192), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 8192), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.0013199360370635988,
+      0.0013199360370635986,
+      6.476393962108335e-07
+    ],
+    "bwd": [
+      0.0025199616432189944,
+      0.002520064115524292,
+      8.505100448419847e-07
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.0006427648067474365,
+      0.0006430720090866089,
+      6.556849145835532e-07
+    ],
+    "bwd": [
+      0.0012754944443702696,
+      0.0012753920555114745,
+      1.0442590936381631e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(50304, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.015173529529571534,
+      0.01517363166809082,
+      1.2498846604189043e-06
+    ],
+    "bwd": [
+      0.02992025604248047,
+      0.029920767784118653,
+      2.5904822137478756e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(6144, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0019590144157409666,
+      0.0019589120149612425,
+      7.168054580687234e-07
+    ],
+    "bwd": [
+      0.003788390398025513,
+      0.003787775993347168,
+      2.058230199466318e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(8192, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0025195520877838136,
+      0.002519552111625672,
+      8.255371233916326e-07
+    ],
+    "bwd": [
+      0.005000089645385742,
+      0.004999680042266846,
+      1.9670609531408212e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(2, 2048, 8192), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 8192), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.002530201554298401,
+      0.002530303955078125,
+      9.660470238252593e-07
+    ],
+    "bwd": [
+      0.005027328062057496,
+      0.00502784013748169,
+      2.2551378331315376e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.0012671999931335447,
+      0.0012666879892349243,
+      6.869253132363624e-07
+    ],
+    "bwd": [
+      0.00253091835975647,
+      0.002531327962875366,
+      9.385186486165841e-07
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(50304, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.030317363357543946,
+      0.030317567825317384,
+      3.7149662732551055e-06
+    ],
+    "bwd": [
+      0.058829414749145506,
+      0.05883238410949707,
+      6.430635224559104e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(6144, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0037738495588302613,
+      0.003773439884185791,
+      1.2287259122107373e-06
+    ],
+    "bwd": [
+      0.007458713531494141,
+      0.007458303928375244,
+      2.608732252078662e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(8192, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.00501975040435791,
+      0.00501964807510376,
+      1.5495624490714447e-06
+    ],
+    "bwd": [
+      0.009802649402618407,
+      0.009802751541137696,
+      2.2644032385307974e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(4, 2048, 8192), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 8192), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.00482590708732605,
+      0.0048261117935180665,
+      8.927311872764563e-07
+    ],
+    "bwd": [
+      0.009891430568695066,
+      0.009892352104187012,
+      2.108459221521138e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.0025999360084533693,
+      0.0025999360084533693,
+      1.1217443392203944e-06
+    ],
+    "bwd": [
+      0.0051403776168823245,
+      0.0051404800415039064,
+      1.6158706486294286e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(50304, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.062354636764526364,
+      0.062354433059692384,
+      3.16634968317499e-06
+    ],
+    "bwd": [
+      0.12224829330444338,
+      0.12224921417236329,
+      4.834307373220306e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(6144, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.0076310529232025155,
+      0.007630848169326783,
+      1.27891661098433e-06
+    ],
+    "bwd": [
+      0.01506119680404663,
+      0.015062016010284424,
+      3.7428329035036483e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(8192, 2048), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': MistProcessGroup(world_size=1, rank=0), 'sequence_parallel': False})": {
+    "fwd": [
+      0.010191667366027831,
+      0.010190848350524903,
+      2.0378504470496826e-06
+    ],
+    "bwd": [
+      0.020224614524841304,
+      0.020224512100219725,
+      1.7252982232625445e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_dense.fused_dense_func), bounded_signature={'x': TensorSpec(shape=(8, 2048, 8192), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048, 8192), dtype=torch.float16, requires_grad=True), 'bias': None, 'return_residual': False, 'process_group': None, 'sequence_parallel': False})": {
+    "fwd": [
+      0.00993556480407715,
+      0.009935359954833984,
+      1.0293547074399972e-06
+    ],
+    "bwd": [
+      0.02009610252380371,
+      0.0200949764251709,
+      4.769038741169574e-06
+    ]
+  }
+}

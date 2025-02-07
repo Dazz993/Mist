@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.unbind), bounded_signature={'input': TensorSpec(shape=(1, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dim': 2})": {
+    "fwd": [
+      2.1504000062122936e-06,
+      2.0479999948292972e-06,
+      3.0720003414899105e-07
+    ],
+    "bwd": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.unbind), bounded_signature={'input': TensorSpec(shape=(2, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dim': 2})": {
+    "fwd": [
+      2.252800017595291e-06,
+      2.0479999948292972e-06,
+      4.0960004553198806e-07
+    ],
+    "bwd": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.unbind), bounded_signature={'input': TensorSpec(shape=(4, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dim': 2})": {
+    "fwd": [
+      2.047999994829297e-06,
+      2.0479999948292972e-06,
+      4.235164736271502e-22
+    ],
+    "bwd": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.unbind), bounded_signature={'input': TensorSpec(shape=(8, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dim': 2})": {
+    "fwd": [
+      2.457600040361285e-06,
+      2.0479999948292972e-06,
+      5.016555550870637e-07
+    ],
+    "bwd": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

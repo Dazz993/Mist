@@ -1,0 +1,62 @@
+{
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.mean), bounded_signature={'input': TensorSpec(shape=(0,), dtype=torch.float16, requires_grad=True), 'dim': None})": {
+    "fwd": [
+      4.049430285021663e-05,
+      3.993599861860275e-05,
+      5.9570427968433514e-06
+    ],
+    "bwd": [
+      7.351353809237479e-05,
+      7.27040022611618e-05,
+      3.783289615204298e-06
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.mean), bounded_signature={'input': TensorSpec(shape=(16384,), dtype=torch.float16, requires_grad=True), 'dim': None})": {
+    "fwd": [
+      4.1536607112735515e-05,
+      4.095999896526337e-05,
+      2.7227343883607158e-06
+    ],
+    "bwd": [
+      9.222224101424217e-05,
+      9.113600105047225e-05,
+      5.337889506740038e-06
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.mean), bounded_signature={'input': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'dim': None})": {
+    "fwd": [
+      4.006511881947518e-05,
+      3.993599861860275e-05,
+      2.315554021043756e-06
+    ],
+    "bwd": [
+      9.111939254403114e-05,
+      8.908800035715103e-05,
+      7.871388101155452e-06
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.mean), bounded_signature={'input': TensorSpec(shape=(4096,), dtype=torch.float16, requires_grad=True), 'dim': None})": {
+    "fwd": [
+      4.1574046965688465e-05,
+      3.891199827194214e-05,
+      5.133989305694073e-05
+    ],
+    "bwd": [
+      9.113286451995375e-05,
+      8.908800035715103e-05,
+      1.0408603147603503e-05
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.mean), bounded_signature={'input': TensorSpec(shape=(8192,), dtype=torch.float16, requires_grad=True), 'dim': None})": {
+    "fwd": [
+      4.048191884160042e-05,
+      3.993599861860275e-05,
+      2.9102734096234763e-06
+    ],
+    "bwd": [
+      9.110268857330086e-05,
+      8.908800035715103e-05,
+      8.067354664726069e-06
+    ]
+  }
+}

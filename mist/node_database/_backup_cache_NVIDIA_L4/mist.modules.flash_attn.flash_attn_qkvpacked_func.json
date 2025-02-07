@@ -1,0 +1,338 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0003337711360316871,
+      0.0003328000009059906,
+      7.203669502413826e-06
+    ],
+    "bwd": [
+      0.001070367904963102,
+      0.001070080041885376,
+      6.37403148279871e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 16, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.00028463359061792513,
+      0.0002836480140686035,
+      1.1345663589166014e-05
+    ],
+    "bwd": [
+      0.001095626050857926,
+      0.0010905599594116212,
+      0.00010899978035793106
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 32, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005977135753590415,
+      0.000596992015838623,
+      7.595558051605086e-06
+    ],
+    "bwd": [
+      0.002365482469090938,
+      0.002362368106842041,
+      1.0198603670212484e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 32, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005378543477865957,
+      0.0005375999808311463,
+      6.652538741563239e-06
+    ],
+    "bwd": [
+      0.001674902299527199,
+      0.001674239993095398,
+      7.774829528023917e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 4, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005780391282753038,
+      0.0005744640231132507,
+      2.6724419790287608e-05
+    ],
+    "bwd": [
+      0.0008269364240570603,
+      0.0008243200182914734,
+      1.4918661475016282e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 8, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.00042580243990345316,
+      0.0004239360094070435,
+      1.5950609398922066e-05
+    ],
+    "bwd": [
+      0.0009647916479429093,
+      0.0009615359902381897,
+      2.5375238314023385e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 8, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005157018599996142,
+      0.0005130239725112915,
+      3.434691383725643e-05
+    ],
+    "bwd": [
+      0.0008977407891849043,
+      0.0008960000276565552,
+      1.184630843665275e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005973058893053575,
+      0.000596992015838623,
+      7.804506674683346e-06
+    ],
+    "bwd": [
+      0.00237831461449564,
+      0.0023777279853820802,
+      1.0941854790612928e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 16, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005382039802821149,
+      0.0005375999808311463,
+      7.677062122266295e-06
+    ],
+    "bwd": [
+      0.0016760242737723077,
+      0.0016783360242843628,
+      1.023009273061387e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 32, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0010957422499236365,
+      0.001095679998397827,
+      9.901813443958646e-06
+    ],
+    "bwd": [
+      0.004920621938618483,
+      0.004922368049621582,
+      1.9720840105033338e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 32, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0010011204815622587,
+      0.0010004479885101318,
+      8.188473263869593e-06
+    ],
+    "bwd": [
+      0.0035934085589736254,
+      0.0035921919345855715,
+      1.3223106308145243e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 4, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0004342192119868227,
+      0.00043212801218032835,
+      1.524159370039612e-05
+    ],
+    "bwd": [
+      0.0009800018362296644,
+      0.0009779199957847596,
+      1.593761147695504e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 8, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.00033550617330856906,
+      0.00033587199449539186,
+      7.110079025484766e-06
+    ],
+    "bwd": [
+      0.001068890286219939,
+      0.0010670080184936523,
+      8.444963842005161e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 8, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0002879634914976178,
+      0.0002836480140686035,
+      5.734469331229079e-05
+    ],
+    "bwd": [
+      0.001095637089917154,
+      0.0010915839672088624,
+      2.866559133184807e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0011034631000850794,
+      0.0011028480529785157,
+      1.1806812161531932e-05
+    ],
+    "bwd": [
+      0.004961468707986251,
+      0.004958208084106445,
+      2.7026502537915942e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 16, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0009950171450064296,
+      0.0009943040013313293,
+      7.824329399953472e-06
+    ],
+    "bwd": [
+      0.003588535051970255,
+      0.0035911679267883303,
+      1.2505757498151634e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 32, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.002094468172858743,
+      0.002095103979110718,
+      2.3667384296015863e-05
+    ],
+    "bwd": [
+      0.009933643297432296,
+      0.009935872077941894,
+      6.442887394244448e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 32, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.001911593390795999,
+      0.001909759998321533,
+      1.6749675925731366e-05
+    ],
+    "bwd": [
+      0.0072368900561761,
+      0.007237631797790528,
+      3.600854241071103e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 4, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0003290015450769451,
+      0.00032870399951934816,
+      6.683412422684513e-06
+    ],
+    "bwd": [
+      0.0010831309076070417,
+      0.0010803200006484985,
+      1.803850167175723e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 8, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.000592140986111717,
+      0.000591871976852417,
+      7.654097706206849e-06
+    ],
+    "bwd": [
+      0.002352959074403929,
+      0.00235315203666687,
+      1.0097513037643728e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 8, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005309075438281864,
+      0.0005304319858551026,
+      6.461094716598234e-06
+    ],
+    "bwd": [
+      0.0016716816525629038,
+      0.0016701439619064332,
+      6.41587558868788e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0021242303500901777,
+      0.0021227519512176515,
+      2.3530507783650414e-05
+    ],
+    "bwd": [
+      0.010068700398830389,
+      0.010059776306152344,
+      6.611035425152358e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 16, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0019282226591053123,
+      0.0019230719804763795,
+      1.992315953241944e-05
+    ],
+    "bwd": [
+      0.007254457502308007,
+      0.007247871875762939,
+      4.202898607188372e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 32, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.004223410848068864,
+      0.004222976207733154,
+      7.241012575194903e-05
+    ],
+    "bwd": [
+      0.020219525193514887,
+      0.020298751831054687,
+      0.00023058299176518848
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 32, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0038833005645058367,
+      0.003901439905166626,
+      6.772846791740445e-05
+    ],
+    "bwd": [
+      0.014858013871428254,
+      0.014898176193237305,
+      0.00015454526578994468
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 4, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0005836058428915696,
+      0.0005826560258865356,
+      7.845605201425314e-06
+    ],
+    "bwd": [
+      0.0023431455174285935,
+      0.002341887950897217,
+      1.053646753046483e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 8, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0010899711977690458,
+      0.0010905599594116212,
+      1.0537471514744752e-05
+    ],
+    "bwd": [
+      0.004898934414982796,
+      0.004900864124298096,
+      2.1516859755054573e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 8, 80), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.11180339887498948, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0009905931472778318,
+      0.0009912319779396058,
+      7.0138596579418045e-06
+    ],
+    "bwd": [
+      0.003578595741471247,
+      0.0035747840404510497,
+      9.927590028776461e-06
+    ]
+  }
+}

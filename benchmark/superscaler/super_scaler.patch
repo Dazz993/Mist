@@ -1,0 +1,520 @@
+diff --git a/profiler/model_configs.py b/profiler/model_configs.py
+index 340c9ef..c3dedb3 100644
+--- a/profiler/model_configs.py
++++ b/profiler/model_configs.py
+@@ -1,6 +1,16 @@
+ # Copyright (c) Microsoft Corporation.
+ # Licensed under the MIT License.
+ 
++# ============================================================
++# Added by Zhanda
++import torch
++_device_name = torch.cuda.get_device_name(torch.device("cuda:0")).lower().split(" ")[-1]
++_use_longer_seq = _device_name.startswith(("a100", "v100-sxm2-32gb"))
++# _use_larger_model = _device_name.startswith("a100")
++_use_larger_model = False
++_seq_len = 4096 if _use_longer_seq else 2048
++# ============================================================
++
+ ## "algo" stands for tensor parallel partition algorithm
+ model_prof_configs = {
+     "resnet": {
+@@ -11,8 +21,12 @@ model_prof_configs = {
+     },
+     "gpt": {
+         "dtype": "fp16",
+-        "model_size": ["350M", "1_3B", "2_6B", "6_7B", "13B", "scale-layer"],
+-        "mbs": [1, 2, 4, 8],
++        # ============================================================
++        # Changed by Zhanda
++        # "model_size": ["350M", "1_3B", "2_6B", "6_7B", "13B", "scale-layer"],
++        "model_size": ["1_3B", "2_6B", "6_7B", "13B", "22B"] if not _use_larger_model else ["2_6B", "6_7B", "13B", "22B", "40B"],
++        # ============================================================
++        "mbs": [1, 2, 4, 8] if not _use_longer_seq else [1, 2],
+         "algo": [0, 1]
+     },
+     "t5": {
+@@ -20,7 +34,7 @@ model_prof_configs = {
+         "model_size": ["770M", "3B", "6B", "11B"],
+         "mbs": [1, 2, 4, 8],
+         "algo": [0]
+-    }
++    },
+ }
+ 
+ # model_size: (num_layers, in_channels, width_factor, params_dtype)
+@@ -34,14 +48,23 @@ resnet_configs = {
+ }
+ 
+ # model_size: (num_layers, seq_len, hidden_size, ffn_hidden_size, num_attention_heads, kv_channels, vocab_size, params_dtype)
++# ============================================================
++# Modified by Zhanda
+ gpt_configs = {
+-    "350M": (1, 2048, 1024, 1024*4, 16, 1024//16, 51200, "fp16"),
+-    "1_3B": (1, 2048, 2048, 2048*4, 32, 2048//32, 51200, "fp16"),
+-    "2_6B": (1, 2048, 2560, 2560*4, 32, 2560//32, 51200, "fp16"),
+-    "6_7B": (1, 2048, 4096, 4096*4, 32, 4096//32, 51200, "fp16"),
+-    "13B": (1, 2048, 5120, 5120*4, 40, 5120//40, 51200, "fp16"),
+-    "scale-layer": (1, 2048, 512, 512*4, 8, 512//8, 51200, "fp16")
++    "350M": (1, _seq_len, 1024, 1024*4, 16, 1024//16, 51200, "fp16"),
++    "1_3B": (1, _seq_len, 2048, 2048*4, 32, 2048//32, 51200, "fp16"),
++    "2_6B": (1, _seq_len, 2560, 2560*4, 32, 2560//32, 51200, "fp16"),
++    "6_7B": (1, _seq_len, 4096, 4096*4, 32, 4096//32, 51200, "fp16"),
++    "13B": (1, _seq_len, 5120, 5120*4, 40, 5120//40, 51200, "fp16"),
++    # ============================================================
++    # Added by Zhanda
++    "22B": (1, _seq_len, 6144, 6144*4, 64, 6144//64, 51200, "fp16"),
++    "40B": (1, _seq_len, 8192, 8192*4, 64, 8192//64, 51200, "fp16"),
++    "test": (1, _seq_len, 512, 512*4, 8, 512//8, 51200, "fp16"),
++    # ============================================================
++    "scale-layer": (1, _seq_len, 512, 512*4, 8, 512//8, 51200, "fp16")
+ }
++# ============================================================
+ 
+ # model_size: (num_layers, encoder_seq_length, decoder_seq_length, hidden_size, ffn_hidden_size, num_attention_heads, kv_channels, vocab_size, params_dtype)
+ ## T5-22B is obtained by doubling the layer number in T5-11B, thus share the same op-level profiling results
+diff --git a/profiler/op_profiler.py b/profiler/op_profiler.py
+index 601da47..44bcb7e 100644
+--- a/profiler/op_profiler.py
++++ b/profiler/op_profiler.py
+@@ -106,7 +106,11 @@ def get_model(model_name, model_size):
+         args.padded_vocab_size = vocab_size
+         args.num_layers = num_layers
+         args.seq_length = seq_len
+-        model = FlexGPTModel(num_layers=num_layers, hidden_size=hidden_size, ffn_hidden_size=ffn_hidden_size, num_attention_heads=num_attention_heads, kv_channels=kv_channels, profiling=True)
++        # =======================================================================
++        # Changed by Zhanda: remove the dropout
++        # model = FlexGPTModel(num_layers=num_layers, hidden_size=hidden_size, ffn_hidden_size=ffn_hidden_size, num_attention_heads=num_attention_heads, kv_channels=kv_channels, profiling=True)
++        model = FlexGPTModel(num_layers=num_layers, hidden_size=hidden_size, ffn_hidden_size=ffn_hidden_size, num_attention_heads=num_attention_heads, kv_channels=kv_channels, profiling=True, hidden_dropout=0.0)
++        # =======================================================================
+     elif model_name == "t5":
+         num_layers, encoder_seq_length, decoder_seq_length, hidden_size, ffn_hidden_size, num_attention_heads, kv_channels, vocab_size, params_dtype = t5_configs[model_size]
+         params_dtype = get_params_dtype(params_dtype)
+@@ -312,7 +316,7 @@ def profile_op(mbs, algo, op_info, params_dtype, grad_type, op_uniq_name):
+     input_data, input_extra_tensors = get_inputs(op_uniq_name, params_dtype)
+     input_tensors = get_input_tensors(op_info, input_data, input_extra_tensors)
+     output_extra_tensors = {}
+-
++            
+     ## Profiling forward/backward computation time
+     sum_fwd_time = 0
+     sum_bwd_time = 0
+@@ -326,7 +330,6 @@ def profile_op(mbs, algo, op_info, params_dtype, grad_type, op_uniq_name):
+             if index >= args.prof_warmup_times:
+                 sum_fwd_time += end_time - start_time     
+             outputs, output_grads = get_outputs_and_grads(output_data, output_extra_tensors, grad_type)
+-
+             torch.cuda.synchronize()
+             start_time = time.time()
+             torch.autograd.grad(outputs=outputs, grad_outputs=output_grads, inputs=input_tensors, allow_unused=False, retain_graph=True)
+@@ -357,7 +360,7 @@ def profile_op(mbs, algo, op_info, params_dtype, grad_type, op_uniq_name):
+         else:
+             remaining_fwd_times = args.prof_repeat_times[0]
+             remaining_bwd_times = args.prof_repeat_times[0]
+-
++        
+         if args.prof_warmup_threshold is not None and avg_warmup_time >= args.prof_warmup_threshold:
+             remaining_fwd_times = max(remaining_fwd_times - args.prof_warmup_times, 0)
+             sum_fwd_time += sum_warmup_time
+@@ -630,7 +633,11 @@ if __name__ == "__main__":
+                 all_prof_tasks.append({"model": model, "size": size, "mbs": mbs})
+ 
+     ## distribute profiling tasks if using multiple nodes
+-    if args.prof_num_nodes is not None:
++    # =======================================================================
++    # Changed by Zhanda
++    # if args.prof_num_nodes is not None:
++    if args.prof_num_nodes is not None and args.prof_num_nodes > 1:
++    # =======================================================================
+         new_hash_list = []
+         ref_data = pickle.load(open(args.prof_ref_data, "rb"))["profiled_results"]
+         all_prof_tasks = get_prof_tasks_by_rank(all_prof_tasks, args.prof_num_nodes, args.prof_node_rank)
+diff --git a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.cpp b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.cpp
+index ea28358..2c96aee 100755
+--- a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.cpp
++++ b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.cpp
+@@ -1,18 +1,4 @@
+-/* coding=utf-8
+- * Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
++/* Copyright (c) 2022, NVIDIA CORPORATION. All rights reserved. */
+ 
+ #include <cuda_fp16.h>
+ #include <torch/extension.h>
+@@ -69,4 +55,4 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
+   m.def("backward", 
+         &multihead_attn::fused_softmax::scaled_upper_triang_masked_softmax::bwd,
+ 	"Self Multihead Attention scaled, time masked softmax -- Backward.");
+-}
++}
+\ No newline at end of file
+diff --git a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.h b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.h
+index 6df83fc..622e703 100755
+--- a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.h
++++ b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax.h
+@@ -1,18 +1,4 @@
+-/* coding=utf-8
+- * Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
++/* Copyright (c) 2022, NVIDIA CORPORATION. All rights reserved. */
+ 
+ #pragma once
+ 
+@@ -340,7 +326,7 @@ void dispatch_scaled_upper_triang_masked_softmax_forward(
+     int softmax_elements_stride, 
+     int attn_batches)
+ {
+-    TORCH_INTERNAL_ASSERT(softmax_elements >= 0 && softmax_elements <= 2048 );
++    TORCH_INTERNAL_ASSERT(softmax_elements >= 0 && softmax_elements <= 16384 );
+     if (softmax_elements == 0) {
+         return;
+     } else {
+@@ -415,6 +401,19 @@ void dispatch_scaled_upper_triang_masked_softmax_forward(
+                 scaled_upper_triang_masked_softmax_warp_forward<input_t, output_t, acc_t, 11>
+                     <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(dst, src, scale, batch_count, softmax_elements_stride, softmax_elements);
+                 break;
++            case 12: // 4096
++                scaled_upper_triang_masked_softmax_warp_forward<input_t, output_t, acc_t, 12>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(dst, src, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
++	    case 13: // 8192
++                scaled_upper_triang_masked_softmax_warp_forward<input_t, output_t, acc_t, 13>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(dst, src, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
++	    case 14: // 16384
++                scaled_upper_triang_masked_softmax_warp_forward<input_t, output_t, acc_t, 14>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(dst, src, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
++
+             default:
+                 break;
+         }
+@@ -431,7 +430,7 @@ void dispatch_scaled_upper_triang_masked_softmax_backward(
+     int softmax_elements_stride, 
+     int attn_batches)
+ {
+-    TORCH_INTERNAL_ASSERT( softmax_elements >= 0 && softmax_elements <= 2048 );
++    TORCH_INTERNAL_ASSERT( softmax_elements >= 0 && softmax_elements <= 16384 );
+     if (softmax_elements == 0) {
+        return;
+     } else {
+@@ -506,8 +505,20 @@ void dispatch_scaled_upper_triang_masked_softmax_backward(
+                 scaled_upper_triang_masked_softmax_warp_backward<input_t, output_t, acc_t, 11>
+                     <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(grad_input, grad, output, scale, batch_count, softmax_elements_stride, softmax_elements);
+                 break;
++            case 12: // 4096
++                scaled_upper_triang_masked_softmax_warp_backward<input_t, output_t, acc_t, 12>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(grad_input, grad, output, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
++            case 13: // 8192
++                scaled_upper_triang_masked_softmax_warp_backward<input_t, output_t, acc_t, 13>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(grad_input, grad, output, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
++            case 14: // 16384
++                scaled_upper_triang_masked_softmax_warp_backward<input_t, output_t, acc_t, 14>
++                    <<<blocks, threads, 0, at::cuda::getCurrentCUDAStream()>>>(grad_input, grad, output, scale, batch_count, softmax_elements_stride, softmax_elements);
++                break;
+             default:
+                 break;
+         }
+     }
+-}
++}
+\ No newline at end of file
+diff --git a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax_cuda.cu b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax_cuda.cu
+index 5efc3d4..98366a8 100755
+--- a/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax_cuda.cu
++++ b/runtime/megatron/fused_kernels/scaled_upper_triang_masked_softmax_cuda.cu
+@@ -1,24 +1,12 @@
+-/* coding=utf-8
+- * Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
++/* Copyright (c) 2022, NVIDIA CORPORATION. All rights reserved. */
+ 
+ #include <ATen/ATen.h>
+ #include <cuda.h>
+ #include <cuda_runtime.h>
+ #include <cuda_fp16.h>
++#ifndef __HIP_PLATFORM_HCC__
+ #include <cuda_profiler_api.h>
++#endif
+ #include <ATen/cuda/CUDAContext.h>
+ #include <torch/extension.h>
+ #include "scaled_upper_triang_masked_softmax.h"
+@@ -35,7 +23,7 @@ torch::Tensor fwd_cuda(
+   // input is a 3d tensor with dimensions [attn_batches, seq_len, seq_len]
+   const int attn_batches = input.size(0);
+   const int seq_len = input.size(1);
+-  TORCH_INTERNAL_ASSERT(seq_len <= 2048);
++  TORCH_INTERNAL_ASSERT(seq_len <= 16384);
+ 
+   // Output 
+   auto act_options = input.options().requires_grad(false);
+@@ -95,4 +83,4 @@ torch::Tensor bwd_cuda(
+ }
+ }
+ }
+-}
++}
+\ No newline at end of file
+diff --git a/runtime/megatron/initialize.py b/runtime/megatron/initialize.py
+index 79c9e37..abf47ad 100755
+--- a/runtime/megatron/initialize.py
++++ b/runtime/megatron/initialize.py
+@@ -130,7 +130,7 @@ def _compile_dependencies():
+ 
+         # Constraints on sequence length and attn_batch_size to enable warp based
+         # optimization and upper triangular optimization (for causal mask)
+-        custom_kernel_constraint = seq_len > 16 and seq_len <=2048 and \
++        custom_kernel_constraint = seq_len > 16 and seq_len <=4096 and \
+             seq_len % 4 == 0 and attn_batch_size % 4 == 0
+         # Print a warning.
+         if not ((args.fp16 or args.bf16) and
+@@ -142,14 +142,19 @@ def _compile_dependencies():
+                     ' back to unfused kernel invocations.', flush=True)
+     
+     # Always build on rank zero first.
+-    if torch.distributed.get_rank() == 0:
++    global_rank = torch.distributed.get_rank()
++    local_rank = global_rank % torch.cuda.device_count()
++    print(f"{global_rank=}, {local_rank=}")
++    if local_rank == 0:
+         start_time = time.time()
+-        print('> compiling and loading fused kernels ...', flush=True)
++        print(f">>> {global_rank=} begin compiling and loading fused kernels. ")
+         fused_kernels.load(args)
++        print(f">>> {global_rank=} with compiling and loading fused kernels. ")
+         torch.distributed.barrier()
+     else:
+         torch.distributed.barrier()
+         fused_kernels.load(args)
++        print(f">>> {global_rank=} with loading fused kernels. ")
+     # Simple barrier to make sure all ranks have passed the
+     # compilation phase successfully before moving on to the
+     # rest of the program. We think this might ensure that
+diff --git a/runtime/megatron/model/flex_gpt.py b/runtime/megatron/model/flex_gpt.py
+index 4ba009a..65b94bb 100755
+--- a/runtime/megatron/model/flex_gpt.py
++++ b/runtime/megatron/model/flex_gpt.py
+@@ -46,7 +46,10 @@ class FlexGPTModel(MegatronModule):
+                  parallel_output=True,
+                  pre_process=True,
+                  post_process=True, 
+-                 profiling=False, hidden_dropout=0.1, num_layers=0, hidden_size=0, ffn_hidden_size=0, num_attention_heads=0, kv_channels=0):
++                 # ============================================================
++                 # Changed by Zhanda
++                 #  profiling=False, hidden_dropout=0.0, num_layers=0, hidden_size=0, ffn_hidden_size=0, num_attention_heads=0, kv_channels=0):
++                 profiling=False, hidden_dropout=0.0, num_layers=0, hidden_size=0, ffn_hidden_size=0, num_attention_heads=0, kv_channels=0):
+         super(FlexGPTModel, self).__init__()
+         args = get_args()
+         init_method = init_method_normal(args.init_method_std)
+diff --git a/runtime/megatron/optimizer/optimizer.py b/runtime/megatron/optimizer/optimizer.py
+index 795806c..21b7945 100755
+--- a/runtime/megatron/optimizer/optimizer.py
++++ b/runtime/megatron/optimizer/optimizer.py
+@@ -26,7 +26,7 @@ import amp_C
+ from megatron import mpu
+ from megatron import print_rank_0
+ 
+-from .clip_grads import clip_grad_norm_fp32, count_zeros_fp32
++from .clip_grads import clip_grad_norm_fp32, count_zeros_fp32, param_is_not_shared, param_is_not_tensor_parallel_duplicate
+ 
+ import os
+ SKIP_WHEN_INF = os.environ.get("SKIP_WHEN_INF", '0') == '1'
+@@ -63,6 +63,54 @@ def _multi_tensor_copy_this_to_that(this, that, overflow_buf=None):
+             that_.copy_(this_)
+ 
+ 
++@torch.no_grad()
++def chunked_count_zeros(tensor, chunk_size=8 * 1024**2):
++    """Count zeros in a tensor in a chunked manner."""
++    tensor = tensor.flatten()
++    tensor_size = tensor.numel()
++    num_chunks = (tensor.numel() + chunk_size - 1) // chunk_size
++    num_zeros = torch.cuda.FloatTensor([0.0])
++    for i in range(num_chunks):
++        chunk = tensor[i * chunk_size : min((i + 1) * chunk_size, tensor_size)]
++        num_zeros += chunk.numel() - torch.count_nonzero(chunk)
++    return int(num_zeros.item())
++
++
++@torch.no_grad()
++def count_all_and_zeros_fp32(parameters, model_parallel_group):
++    if isinstance(parameters, torch.Tensor):
++        parameters = [parameters]
++
++    # Filter parameters based on:
++    #   - grad should not be none
++    #   - parameter should not be shared
++    #   - should not be a replica due to tensor model parallelism
++    total_num_zeros = torch.cuda.FloatTensor([0.0])
++    total_num_grads = torch.cuda.FloatTensor([0.0])
++    for param in parameters:
++        grad_not_none = param.grad is not None
++        is_not_shared = param_is_not_shared(param)
++        is_not_tp_duplicate = param_is_not_tensor_parallel_duplicate(param)
++        if grad_not_none and is_not_shared and is_not_tp_duplicate:
++            grad = param.grad.detach()
++            # num_zeros = grad.numel() - torch.count_nonzero(grad)
++            num_zeros = chunked_count_zeros(grad)
++            total_num_zeros = num_zeros + total_num_zeros
++            total_num_grads = grad.numel() + total_num_grads
++
++    # Sum across all model-parallel GPUs.
++    torch.distributed.all_reduce(
++        total_num_zeros, op=torch.distributed.ReduceOp.SUM, group=model_parallel_group
++    )
++    torch.distributed.all_reduce(
++        total_num_grads, op=torch.distributed.ReduceOp.SUM, group=model_parallel_group
++    )
++
++    total_num_zeros = int(total_num_zeros.item())
++    total_num_grads = int(total_num_grads.item())
++
++    return total_num_zeros, total_num_grads
++
+ 
+ class MegatronOptimizer(ABC):
+ 
+@@ -418,6 +466,12 @@ class Float16OptimizerWithFloat16Params(MegatronOptimizer):
+             # so we can update the loss scale.
+             self.grad_scaler.update(found_inf_flag)
+ 
++            # ======================
++            # Added by Zhanda
++            if found_inf_flag:
++                print(f"[Warning] Found inf/nan in the gradients. Skip the update. It's not acceptable in the benchmarking process.")
++            # ======================
++
+             # If we found inf/nan, skip the update.
+             if found_inf_flag and SKIP_WHEN_INF:
+                 return False, None, None
+@@ -432,6 +486,16 @@ class Float16OptimizerWithFloat16Params(MegatronOptimizer):
+         num_zeros_in_grad = self.count_zeros() if \
+                             self.log_num_zeros_in_grad else None
+ 
++        # ======================
++        # Added by Zhanda
++        num_zeros_in_grad, num_elem_in_grad = count_all_and_zeros_fp32(
++            self.get_parameters(), model_parallel_group=mpu.get_model_parallel_group()
++        )
++        print(
++            f"[RANK={torch.distributed.get_rank()}] {num_zeros_in_grad=}, {num_elem_in_grad=}. Ratio: {num_zeros_in_grad / num_elem_in_grad * 100:.2f}%"
++        )
++        # ======================
++
+         # Step the optimizer.
+         self.optimizer.step()
+ 
+diff --git a/runtime/megatron/training.py b/runtime/megatron/training.py
+index 2d6204d..c3bbee2 100755
+--- a/runtime/megatron/training.py
++++ b/runtime/megatron/training.py
+@@ -856,6 +856,7 @@ def training_log(loss_dict, total_loss_dict, learning_rate, iteration,
+                          normalizer=total_iterations)
+ 
+     if iteration % args.log_interval == 0:
++        torch.cuda.synchronize()
+         elapsed_time = timers('interval-time').elapsed()
+         elapsed_time_per_iteration = elapsed_time / total_iterations
+         if writer and torch.distributed.get_rank() == 0:
+diff --git a/runtime/pretrain_gpt.py b/runtime/pretrain_gpt.py
+index a850479..cb586a3 100755
+--- a/runtime/pretrain_gpt.py
++++ b/runtime/pretrain_gpt.py
+@@ -55,9 +55,15 @@ def get_batch(data_iterator):
+     vocab_size = 50257
+     tokens = torch.rand((args.micro_batch_size//mpu.get_op_dp_size(0), args.seq_length), requires_grad=False, device=torch.cuda.current_device()).long() * vocab_size
+     # labels = torch.rand((args.micro_batch_size//mpu.get_op_dp_size(-1), args.seq_length), requires_grad=False, device=torch.cuda.current_device()).long() * vocab_size
+-    loss_mask =  (torch.rand((args.micro_batch_size//mpu.get_op_dp_size(-1), args.seq_length), requires_grad=False, device=torch.cuda.current_device()) < 0.5).float()
+-    attention_mask = (torch.rand((args.micro_batch_size, 1, args.seq_length, args.seq_length), requires_grad=False, device=torch.cuda.current_device()) < 0.5)
+-    position_ids = torch.rand((args.micro_batch_size//mpu.get_op_dp_size(0), args.seq_length), requires_grad=False, device=torch.cuda.current_device()).long() * args.seq_length
++    # loss_mask =  (torch.rand((args.micro_batch_size//mpu.get_op_dp_size(-1), args.seq_length), requires_grad=False, device=torch.cuda.current_device()) < 0.5).float()
++    # attention_mask = (torch.rand((args.micro_batch_size, 1, args.seq_length, args.seq_length), requires_grad=False, device=torch.cuda.current_device()) < 0.5)
++    # position_ids = torch.rand((args.micro_batch_size//mpu.get_op_dp_size(0), args.seq_length), requires_grad=False, device=torch.cuda.current_device()).long() * args.seq_length
++    # =====================================================================
++    # Changed by Zhanda
++    tokens = torch.randint(0, 10000, (args.micro_batch_size//mpu.get_op_dp_size(0), args.seq_length), requires_grad=False, device=torch.cuda.current_device()).long()
++    loss_mask = (torch.ones((args.micro_batch_size//mpu.get_op_dp_size(-1), args.seq_length), requires_grad=False, device=torch.cuda.current_device())).float()
++    attention_mask = (torch.ones((args.micro_batch_size, 1, args.seq_length, args.seq_length), requires_grad=False, device=torch.cuda.current_device())).bool()
++    position_ids = torch.arange(args.seq_length, device=torch.cuda.current_device()).unsqueeze(0).expand((args.micro_batch_size//mpu.get_op_dp_size(0), -1))
+ 
+     return tokens, loss_mask, position_ids, attention_mask
+ 
+diff --git a/search/aceso_utils.py b/search/aceso_utils.py
+index 64c33f7..71cc6a6 100644
+--- a/search/aceso_utils.py
++++ b/search/aceso_utils.py
+@@ -24,15 +24,29 @@ resnet_configs = {
+ }
+ 
+ # model_size: (num_layers, seq_len, hidden_size, ffn_hidden_size, num_attention_heads, kv_channels, vocab_size, params_dtype)
++# ============================================================
++# Modified by Zhanda
++import torch
++_device_name = torch.cuda.get_device_name(torch.device("cuda:0")).lower().split(" ")[-1]
++_use_longer_seq = _device_name.startswith(("a100", "v100-sxm2-32gb"))
++# _use_larger_model = _device_name.startswith("a100")
++_use_larger_model = False
++_seq_len = 4096 if _use_longer_seq else 2048
+ gpt_configs = {
+-    "350M": (24, 2048, 1024, 1024*4, 16, 1024//16, 51200, "fp16"),
+-    "1_3B": (24, 2048, 2048, 2048*4, 32, 2048//32, 51200, "fp16"),
+-    "2_6B": (32, 2048, 2560, 2560*4, 32, 2560//32, 51200, "fp16"),
+-    "6_7B": (32, 2048, 4096, 4096*4, 32, 4096//32, 51200, "fp16"),
+-    "13B": (40, 2048, 5120, 5120*4, 40, 5120//40, 51200, "fp16"),
+-    "scale-layer": (1, 2048, 512, 512*4, 8, 512//8, 51200, "fp16")
++    "350M": (24, _seq_len, 1024, 1024*4, 16, 1024//16, 51200, "fp16"),
++    "1_3B": (24, _seq_len, 2048, 2048*4, 32, 2048//32, 51200, "fp16"),
++    "2_6B": (32, _seq_len, 2560, 2560*4, 32, 2560//32, 51200, "fp16"),
++    "6_7B": (32, _seq_len, 4096, 4096*4, 32, 4096//32, 51200, "fp16"),
++    "13B": (40, _seq_len, 5120, 5120*4, 40, 5120//40, 51200, "fp16"),
++    # ============================================================
++    # Added by Zhanda
++    "22B": (48, _seq_len, 6144, 6144*4, 64, 6144 // 64, 51200, "fp16"),
++    "40B": (48, _seq_len, 8192, 8192*4, 64, 8192 // 64, 51200, "fp16"),
++    "test": (4, _seq_len, 512, 512*4, 8, 512 // 8, 51200, "fp16"),
++    # ============================================================
++    "scale-layer": (1, _seq_len, 512, 512*4, 8, 512//8, 51200, "fp16")
+ }
+-
++# ============================================================
+ 
+ # model_size: (num_layers, encoder_seq_length, decoder_seq_length, hidden_size, ffn_hidden_size, num_attention_heads, kv_channels, vocab_size, params_dtype)
+ t5_configs = {

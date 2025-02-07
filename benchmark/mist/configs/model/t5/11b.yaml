@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - /model/t5/common.yaml
+  - _self_
+
+model:
+  name: t5-11b
+  hidden_size: 4096
+  intermediate_size: 16384
+  num_hidden_layers: 24
+  num_attention_heads: 64

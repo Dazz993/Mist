@@ -1,0 +1,1 @@
+bash scripts/tops/l4/gpt2/1_8xl4_node_1_pcie.sh

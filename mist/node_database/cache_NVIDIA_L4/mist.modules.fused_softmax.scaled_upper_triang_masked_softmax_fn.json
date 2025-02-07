@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_softmax.scaled_upper_triang_masked_softmax_fn), bounded_signature={'inputs': TensorSpec(shape=(128, 2048, 2048), dtype=torch.float16, requires_grad=True), 'scale': 0.08838834764831845})": {
+    "fwd": [
+      0.00675071997642517,
+      0.0067532799243927005,
+      1.845043155754558e-05
+    ],
+    "bwd": [
+      0.01828792324066162,
+      0.01828812789916992,
+      6.003816761753559e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_softmax.scaled_upper_triang_masked_softmax_fn), bounded_signature={'inputs': TensorSpec(shape=(16, 2048, 2048), dtype=torch.float16, requires_grad=True), 'scale': 0.08838834764831845})": {
+    "fwd": [
+      0.0008472576141357423,
+      0.0008473600149154663,
+      1.1402868241479252e-06
+    ],
+    "bwd": [
+      0.0023073792219161986,
+      0.002306559920310974,
+      8.49423000941962e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_softmax.scaled_upper_triang_masked_softmax_fn), bounded_signature={'inputs': TensorSpec(shape=(32, 2048, 2048), dtype=torch.float16, requires_grad=True), 'scale': 0.08838834764831845})": {
+    "fwd": [
+      0.0016783360123634335,
+      0.0016783360242843628,
+      4.044485605733913e-06
+    ],
+    "bwd": [
+      0.004570214414596558,
+      0.004573184013366699,
+      2.4773342012383463e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.fused_softmax.scaled_upper_triang_masked_softmax_fn), bounded_signature={'inputs': TensorSpec(shape=(64, 2048, 2048), dtype=torch.float16, requires_grad=True), 'scale': 0.08838834764831845})": {
+    "fwd": [
+      0.0033609728097915652,
+      0.003357696056365967,
+      1.3652657328063187e-05
+    ],
+    "bwd": [
+      0.009133260822296143,
+      0.009133056163787841,
+      1.6687203921093568e-05
+    ]
+  }
+}

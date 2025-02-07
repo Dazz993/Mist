@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(torch.baddbmm), bounded_signature={'input': TensorSpec(shape=(128, 2048, 2048), dtype=torch.float16, requires_grad=False), 'batch1': TensorSpec(shape=(128, 2048, 128), dtype=torch.float16, requires_grad=True), 'batch2': TensorSpec(shape=(128, 128, 2048), dtype=torch.float16, requires_grad=True), 'alpha': 1, 'beta': 0.0, 'out': None})": {
+    "fwd": [
+      0.0050010112285614,
+      0.005001728057861328,
+      3.099200518481075e-06
+    ],
+    "bwd": [
+      0.010036019134521484,
+      0.010034687995910644,
+      6.1063380242405135e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.baddbmm), bounded_signature={'input': TensorSpec(shape=(16, 2048, 2048), dtype=torch.float16, requires_grad=False), 'batch1': TensorSpec(shape=(16, 2048, 128), dtype=torch.float16, requires_grad=True), 'batch2': TensorSpec(shape=(16, 128, 2048), dtype=torch.float16, requires_grad=True), 'alpha': 1, 'beta': 0.0, 'out': None})": {
+    "fwd": [
+      0.0005221376061439514,
+      0.000521727979183197,
+      2.169809429315166e-06
+    ],
+    "bwd": [
+      0.0014386175870895385,
+      0.0014387199878692627,
+      2.0709276067589385e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.baddbmm), bounded_signature={'input': TensorSpec(shape=(32, 2048, 2048), dtype=torch.float16, requires_grad=False), 'batch1': TensorSpec(shape=(32, 2048, 128), dtype=torch.float16, requires_grad=True), 'batch2': TensorSpec(shape=(32, 128, 2048), dtype=torch.float16, requires_grad=True), 'alpha': 1, 'beta': 0.0, 'out': None})": {
+    "fwd": [
+      0.0011109375953674318,
+      0.0011115520000457763,
+      2.1698336203406563e-06
+    ],
+    "bwd": [
+      0.0026739712715148924,
+      0.002673664093017578,
+      1.998738287231967e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.baddbmm), bounded_signature={'input': TensorSpec(shape=(64, 2048, 2048), dtype=torch.float16, requires_grad=False), 'batch1': TensorSpec(shape=(64, 2048, 128), dtype=torch.float16, requires_grad=True), 'batch2': TensorSpec(shape=(64, 128, 2048), dtype=torch.float16, requires_grad=True), 'alpha': 1, 'beta': 0.0, 'out': None})": {
+    "fwd": [
+      0.0024780800342559814,
+      0.00247705602645874,
+      2.822994679938722e-06
+    ],
+    "bwd": [
+      0.005102694463729859,
+      0.005102591991424561,
+      3.0872875733241165e-06
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+# @package _global_
+
+defaults:
+  - /model/gpt2/7b
+
+training:
+  max_sequence_length: 2048
+  vocab_size: 50304
+  global_batch_size: 32
+  params_dtype: float16
+  exec_dtype: float16
+  optimizer_dtype: float32
+  autocast_enabled: false
+  optimizer_name: adamw
+
+hardware:
+  gpu_type: null
+  num_nodes: 1
+  num_gpus_per_node: 8
+  inter_node_gpu_gpu_comm_params: [2.0, 0.0001, 1.0]
+  intra_node_gpu_gpu_comm_params: [1.726804, -0.001273, 0.696697]
+  cpu_gpu_comm_params: [12.686143, 0.002758]
+  gpu_cpu_comm_params: [10.692224, 0.00169]
+  interference_model_params: [20.7144, 2.9141, 12.931, 14.095, 6.7863, 8.5577, 1.0593, 17.9384, 2.5234, 12.4777, 1.3581, 1.4628, 2.4114, 3.0539, 13.6618, 14.5992, 1.2826, 1.0, 1.0022, 1.0012, 1.0035, 1.0, 2.0523, 2.0529, 2.7258, 14.5733, 1.7557, 1.7271]
+  nvlink: false
+  memory_capacity: 22.488
+
+strategy:
+  enabled: false
+  layer_partitions: [16, 16]
+  device_assignment: [[2, 4], [2, 4]]
+  gradient_checkpointing: [0, 0]
+  gradient_accumulation_steps: 16
+  stage_strategies:
+  - [1, 4, 2, 0, 0, 1, 0, 0, 0, 0]
+  - [1, 4, 2, 0, 0, 1, 0, 0, 0, 0]
+  pre_post_strategy: preset
+  pre_post_strategy_array: [1, 4, 2, 0, 0, 1, 0, 0, 0, 0]
+
+
+tuning:
+  enabled: true
+  tuning_granularity: uniform-device-pp   # no-pp, uniform-pp, uniform-device-pp, inter-stage
+  activation_checkpointing_tuning_enabled: true
+  state_offloading_enabled: true
+  activation_offloading_enabled: true
+  # activation_checkpointing_tuning_enabled: true
+  # state_offloading_enabled: true
+  # activation_offloading_enabled: true
+  # pre_post_strategy: "${strategy.pre_post_strategy}"
+  # pre_post_strategy_array: "${strategy.pre_post_strategy_array}"
+  pre_post_strategy: dp   # ["dp", "intra-node-tp-with-ore", "intra-node-tp-without-ore"]
+  pre_post_strategy_array: null
+
+use_memory_buffer: true
+
+# The following are just for benchmarking
+# Whether to use optimizer
+use_optim: true
+# Whether use ReSwap optimizer
+use_re_swap_optim: true
+# Which optimizer to use if enable_re_swap is false
+optim_impl_if_not_re_swap: apex
+# Whether to use zero if not re-swap
+use_zero_if_not_re_swap: false
+
+overlap: true
+cpu_optim_step: false
+cpu_accumu_grad: false
+
+profile: false
+tiny_bench: true
+memory_debug: false

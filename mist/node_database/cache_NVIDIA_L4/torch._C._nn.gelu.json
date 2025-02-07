@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(torch._C._nn.gelu), bounded_signature={'input': TensorSpec(shape=(1, 2048, 8192), dtype=torch.float16, requires_grad=True), 'approximate': 'tanh'})": {
+    "fwd": [
+      0.00015042560398578642,
+      0.00014950400590896606,
+      2.1209409648130032e-06
+    ],
+    "bwd": [
+      0.00038502399623394014,
+      0.0003824639916419983,
+      5.9533070919409145e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch._C._nn.gelu), bounded_signature={'input': TensorSpec(shape=(2, 2048, 8192), dtype=torch.float16, requires_grad=True), 'approximate': 'tanh'})": {
+    "fwd": [
+      0.0005029888063669204,
+      0.0005022720098495484,
+      2.5414972200435627e-06
+    ],
+    "bwd": [
+      0.0008791039943695067,
+      0.0008801279962062836,
+      4.492780655222538e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch._C._nn.gelu), bounded_signature={'input': TensorSpec(shape=(4, 2048, 8192), dtype=torch.float16, requires_grad=True), 'approximate': 'tanh'})": {
+    "fwd": [
+      0.0010970111966133117,
+      0.001097216010093689,
+      4.441151533656298e-06
+    ],
+    "bwd": [
+      0.0017295360088348387,
+      0.0017274880409240722,
+      6.636277502825568e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch._C._nn.gelu), bounded_signature={'input': TensorSpec(shape=(8, 2048, 8192), dtype=torch.float16, requires_grad=True), 'approximate': 'tanh'})": {
+    "fwd": [
+      0.002240716767311096,
+      0.0022415359020233156,
+      4.754659133729078e-06
+    ],
+    "bwd": [
+      0.0034482176065444943,
+      0.0034488320350646974,
+      1.368639516676849e-05
+    ]
+  }
+}

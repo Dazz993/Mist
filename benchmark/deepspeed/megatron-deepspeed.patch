@@ -1,0 +1,326 @@
+diff --git a/megatron/arguments.py b/megatron/arguments.py
+index c928904..c871684 100644
+--- a/megatron/arguments.py
++++ b/megatron/arguments.py
+@@ -611,6 +611,8 @@ def _add_network_size_args(parser):
+                        'This is set to 4*hidden-size if not provided')
+     group.add_argument('--num-attention-heads', type=int, default=None,
+                        help='Number of transformer attention heads.')
++    group.add_argument('--parallel-block', action='store_true',
++                       help='Use parallel block for transformer layers.')
+     group.add_argument('--num-key-value-heads', type=int, default=None,
+                        help='Number of key_value heads that should be used to implement Grouped Query Attention.')
+     group.add_argument('--kv-channels', type=int, default=None,
+diff --git a/megatron/core/transformer/transformer_config.py b/megatron/core/transformer/transformer_config.py
+index de21046..c7fcd41 100644
+--- a/megatron/core/transformer/transformer_config.py
++++ b/megatron/core/transformer/transformer_config.py
+@@ -112,6 +112,7 @@ class TransformerConfig(ModelParallelConfig):
+     kv_channels: int = None
+     hidden_dropout: float = 0.1
+     attention_dropout: float = 0.1
++    parallel_block: bool = False
+     fp32_residual_connection: bool = False
+     # @jcasper should we keep this option?
+     apply_residual_connection_post_layernorm: bool = False
+diff --git a/megatron/model/transformer.py b/megatron/model/transformer.py
+index 478e853..3dc7bd5 100644
+--- a/megatron/model/transformer.py
++++ b/megatron/model/transformer.py
+@@ -6,6 +6,7 @@ import math
+ import numpy as np
+ import torch
+ import torch.nn.functional as F
++import xformers.ops as xops
+ from typing import Optional
+ 
+ from megatron import get_timers, get_args, get_retro_args, core, get_num_microbatches
+@@ -436,6 +437,96 @@ class FlashSelfAttention(torch.nn.Module):
+             output, 'b h s d -> b s h d').contiguous()
+         return output
+ 
++# Function Interface for tracing
++def xformer_memory_efficient_attention(
++    qkv, causal=True, key_padding_mask=None, dropout=0.0, softmax_scale=None
++):
++    """Implements the multihead softmax attention.
++    Arguments
++    ---------
++        qkv: The tensor containing the query, key, and value. (B, S, 3, H, D)
++        causal: if passed, will override self.causal
++        key_padding_mask: boolean mask to apply to the attention weights. True means to keep,
++            False means to mask out. (B, S)
++    """
++    q, k, v = qkv.unbind(dim=2)
++    batch_size, seqlen, num_heads, head_dim = q.shape
++    softmax_scale = softmax_scale or 1.0 / math.sqrt(q.shape[-1])
++
++    # Compute the bias
++    attn_bias = None
++    if key_padding_mask is not None:
++        padding_mask = torch.full(
++            (batch_size, seqlen), -10000.0, dtype=qkv.dtype, device=qkv.device
++        )
++        padding_mask.masked_fill_(key_padding_mask, 0.0)
++        attn_bias = padding_mask.reshape(batch_size, 1, 1, seqlen)
++        # Expand the mask to the same shape of q
++        attn_bias = attn_bias.expand(-1, num_heads, seqlen, -1)
++
++    if causal and attn_bias is None:
++        attn_bias = xops.LowerTriangularMask()
++    elif causal:
++        # ===============================================================================
++        # Only works with FwOp
++        # attn_bias = xops.fmha.attn_bias.LowerTriangularMaskWithTensorBias(attn_bias)
++        # ===============================================================================
++        # Compatibility for both FwOp and BwOp
++        causal_mask = torch.triu(
++            torch.full((seqlen, seqlen), -10000.0, device=qkv.device, dtype=qkv.dtype),
++            1,
++        )
++        attn_bias = attn_bias + causal_mask
++
++    # Compute the attention
++    output = xops.memory_efficient_attention(
++        query=q,
++        key=k,
++        value=v,
++        attn_bias=attn_bias,
++        p=dropout,
++        scale=softmax_scale,
++        op=(xops.fmha.cutlass.FwOp, xops.fmha.cutlass.BwOp),
++    )
++
++    return output
++
++class XFormersSelfAttention(torch.nn.Module):
++    """Implement the scaled dot product attention with softmax.
++    Arguments
++    ---------
++        softmax_scale: The temperature to use for the softmax attention.
++                      (default: 1/sqrt(d_keys) where d_keys is computed at
++                      runtime)
++        attention_dropout: The dropout rate to apply to the attention
++                           (default: 0.0)
++    """
++    def __init__(self, causal=False, softmax_scale=None, attention_dropout=0.0,
++                 device=None, dtype=None):
++        super().__init__()
++        assert rearrange is not None, 'Please install einops first, e.g., with pip install einops'
++        self.causal = causal
++        self.softmax_scale = softmax_scale
++        self.dropout_p = attention_dropout
++
++    def forward(self, q, k, v, attention_mask=None):
++        """Implements the multihead softmax attention.
++        Arguments
++        ---------
++            q, k, v: The tensor containing the query, key, and value. (B, S, H, D)
++        """
++
++        assert all((i.dtype in [torch.float16, torch.bfloat16] for i in (q,k,v)))
++        assert all((i.is_cuda for i in (q,k,v)))
++
++        # Stack into (B, S, 3, H, D)
++        qkv = torch.stack([q, k, v], dim=2)
++        output = xformer_memory_efficient_attention(
++            qkv, causal=self.causal, key_padding_mask=attention_mask,
++            dropout=self.dropout_p, softmax_scale=self.softmax_scale
++        )
++        return output
++
+ class FlashSelfAttentionTriton(torch.nn.Module):
+     """Implement the scaled dot product attention with softmax.
+     Arguments
+@@ -496,6 +587,14 @@ class ParallelAttention(MegatronModule):
+             and attention_type == AttnType.self_attn \
+             and self.attn_mask_type == AttnMaskType.causal
+         self.use_flash_attn_triton = args.use_flash_attn_triton
++        # Dispatch efficient attention kernels
++        device_name = torch.cuda.get_device_name().split(" ")[-1].lower()
++        if device_name.startswith(("v100",)):
++            self.use_xformer_attn = self.use_flash_attn
++            self.use_flash_attn = False
++        else:
++            self.use_xformer_attn = False
++            self.use_flash_attn = self.use_flash_attn
+         if self.use_flash_attn:
+             global flash_attn_builder
+             try:
+@@ -517,6 +616,11 @@ class ParallelAttention(MegatronModule):
+                                                                 'supports causal mask for now')
+             if rearrange is None:
+                 raise ImportError('einops is not installed, please install with pip install einops')
++        if self.use_xformer_attn:
++            assert attention_type == AttnType.self_attn, ('XFormersAttention code path only supports '
++                                                          'self-attention for now')
++            assert self.attn_mask_type == AttnMaskType.causal, ('XFormersAttention code path only '
++                                                                'supports causal mask for now')
+ 
+         projection_size = config.kv_channels * config.num_attention_heads
+ 
+@@ -569,6 +673,8 @@ class ParallelAttention(MegatronModule):
+             local_attn = FlashSelfAttentionTriton(causal=True, attention_dropout=args.attention_dropout)
+         elif self.use_flash_attn:
+             local_attn = FlashSelfAttention(causal=True, attention_dropout=config.attention_dropout)
++        elif self.use_xformer_attn:
++            local_attn = XFormersSelfAttention(causal=True, attention_dropout=config.attention_dropout)
+         else:
+             local_attn = CoreAttention(self.layer_number, config, self.attn_mask_type)
+ 
+@@ -581,6 +687,8 @@ class ParallelAttention(MegatronModule):
+         else:
+             if self.use_flash_attn:
+                 self.core_attention_flash = local_attn
++            elif self.use_xformer_attn:
++                self.core_attention_xformer = local_attn
+             else:
+                 self.core_attention = local_attn
+                 self.checkpoint_core_attention = config.recompute_granularity == 'selective'
+@@ -807,6 +915,15 @@ class ParallelAttention(MegatronModule):
+ 
+                 if not self.use_flash_attn_triton:
+                     context_layer = rearrange(context_layer, 'b s h d -> s b (h d)').contiguous()
++            elif self.use_xformer_attn:
++                query_layer, key_layer, value_layer = [rearrange(x, 's b ... -> b s ...').contiguous()
++                            for x in (query_layer, key_layer, value_layer)]
++                if self.sequence_parallel:
++                    context_layer = self.core_attention_xformer(query_layer, key_layer, value_layer)
++                else:
++                    with tensor_parallel.get_cuda_rng_tracker().fork():
++                        context_layer = self.core_attention_xformer(query_layer, key_layer, value_layer)
++                context_layer = rearrange(context_layer, 'b s h d -> s b (h d)').contiguous()
+             else:
+                 if self.checkpoint_core_attention:
+                     context_layer = self._checkpointed_attention_forward(
+@@ -878,6 +995,7 @@ class ParallelTransformerLayer(MegatronModule):
+ 
+         self.bf16 = config.bf16
+         self.fp32_residual_connection = config.fp32_residual_connection
++        self.parallel_block = config.parallel_block
+ 
+         # Layernorm on the input data.
+         if args.normalization == 'layernorm':
+@@ -906,22 +1024,23 @@ class ParallelTransformerLayer(MegatronModule):
+         self.drop_path = DropPath(drop_path_rate) if drop_path_rate > 0.0 else None
+ 
+         # Layernorm on the attention output
+-        if args.normalization == 'layernorm':
+-            if get_accelerator().device_name() == 'cuda':
+-                self.post_attention_layernorm = LayerNorm(
+-                    config.hidden_size,
+-                    eps=config.layernorm_epsilon,
+-                    no_persist_layer_norm=not config.persist_layer_norm,
+-                    sequence_parallel=config.sequence_parallel,
+-                    apply_layernorm_1p=args.apply_layernorm_1p,
+-                    mem_efficient_ln=args.mem_efficient_ln)
++        if not self.parallel_block:
++            if args.normalization == 'layernorm':
++                if get_accelerator().device_name() == 'cuda':
++                    self.post_attention_layernorm = LayerNorm(
++                        config.hidden_size,
++                        eps=config.layernorm_epsilon,
++                        no_persist_layer_norm=not config.persist_layer_norm,
++                        sequence_parallel=config.sequence_parallel,
++                        apply_layernorm_1p=args.apply_layernorm_1p,
++                        mem_efficient_ln=args.mem_efficient_ln)
++                else:
++                    self.post_attention_layernorm = LayerNorm(
++                        config.hidden_size,
++                        eps=config.layernorm_epsilon)
+             else:
+-                self.post_attention_layernorm = LayerNorm(
+-                    config.hidden_size,
+-                    eps=config.layernorm_epsilon)
+-        else:
+-            self.post_attention_layernorm = RMSNorm(config.hidden_size, config.layernorm_epsilon)
+-            # Cross attention.
++                self.post_attention_layernorm = RMSNorm(config.hidden_size, config.layernorm_epsilon)
++        # Cross attention.
+         if self.layer_type in (LayerType.decoder,
+                                LayerType.retro_decoder,
+                                LayerType.retro_decoder_with_retriever,
+@@ -1207,6 +1326,18 @@ class ParallelTransformerLayer(MegatronModule):
+                 retriever_attn_mask=None,
+                 inference_params=None,
+                 rotary_pos_emb=None):
++        # jit scripting for a nn.module (with dropout) is not
++        # trigerring the fusion kernel. For now, we use two
++        # different nn.functional routines to account for varying
++        # dropout semantics during training and inference phases.
++        if self.bias_dropout_fusion:
++            if self.training:
++                bias_dropout_add_func = bias_dropout_add_fused_train
++            else:
++                bias_dropout_add_func = bias_dropout_add_fused_inference
++        else:
++            bias_dropout_add_func = get_bias_dropout_add(self.training)
++
+         # hidden_states: [s, b, h]
+ 
+         # Layer norm at the beginning of the transformer layer.
+@@ -1226,35 +1357,26 @@ class ParallelTransformerLayer(MegatronModule):
+         else:
+             residual = hidden_states
+ 
+-        if self.drop_path is None:
+-            # jit scripting for a nn.module (with dropout) is not
+-            # trigerring the fusion kernel. For now, we use two
+-            # different nn.functional routines to account for varying
+-            # dropout semantics during training and inference phases.
+-            if self.bias_dropout_fusion:
+-                if self.training:
+-                    bias_dropout_add_func = bias_dropout_add_fused_train
+-                else:
+-                    bias_dropout_add_func = bias_dropout_add_fused_inference
+-            else:
+-                bias_dropout_add_func = get_bias_dropout_add(self.training)
+-
+-            if attention_bias is not None:
+-                attention_bias = attention_bias.expand_as(residual)
+-            with self.bias_dropout_add_exec_handler():
+-                layernorm_input = bias_dropout_add_func(
+-                    attention_output,
+-                    attention_bias,
+-                    residual,
+-                    self.hidden_dropout)
++        if self.parallel_block:
++            layernorm_input = attention_output
+         else:
+-            out = torch.nn.functional.dropout(attention_output + attention_bias,
+-                                              p=self.hidden_dropout,
+-                                              training=self.training)
+-            layernorm_input = residual + self.drop_path(out)
++            if self.drop_path is None:
++                if attention_bias is not None:
++                    attention_bias = attention_bias.expand_as(residual)
++                with self.bias_dropout_add_exec_handler():
++                    layernorm_input = bias_dropout_add_func(
++                        attention_output,
++                        attention_bias,
++                        residual,
++                        self.hidden_dropout)
++            else:
++                out = torch.nn.functional.dropout(attention_output + attention_bias,
++                                                p=self.hidden_dropout,
++                                                training=self.training)
++                layernorm_input = residual + self.drop_path(out)
+ 
+-        # Layer norm post the self attention.
+-        layernorm_output = self.post_attention_layernorm(layernorm_input)
++            # Layer norm post the self attention.
++            layernorm_output = self.post_attention_layernorm(layernorm_input)
+ 
+         # Cross attention.
+         if self.layer_type == LayerType.encoder:
+@@ -1299,7 +1421,9 @@ class ParallelTransformerLayer(MegatronModule):
+             mlp_output, moe_loss, _ = self.mlp(layernorm_output)
+ 
+         # Second residual connection.
+-        if self.apply_residual_connection_post_layernorm:
++        if self.parallel_block:
++            mlp_output = mlp_output + attention_output
++        elif self.apply_residual_connection_post_layernorm:
+             residual = layernorm_output
+         else:
+             residual = layernorm_input

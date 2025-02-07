@@ -1,0 +1,13 @@
+# @package _global_
+
+defaults:
+  - /model/gpt2/common.yaml
+  - _self_
+
+model:
+  name: gpt2-7b
+  hidden_size: 4096
+  intermediate_size: 16384
+  num_hidden_layers: 48
+  num_attention_heads: 32
+  num_heads_kv: ~

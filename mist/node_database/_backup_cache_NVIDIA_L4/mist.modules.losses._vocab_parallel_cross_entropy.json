@@ -1,0 +1,62 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(0, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(0,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.001204487722653609,
+      0.0011980799436569214,
+      1.5994798640696947e-05
+    ],
+    "bwd": [
+      0.0005685783491268025,
+      0.000567296028137207,
+      1.1145849734975184e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(16384, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(16384,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.05438839403788249,
+      0.05446246337890625,
+      0.00019247469529049395
+    ],
+    "bwd": [
+      0.0354708480834961,
+      0.035466239929199214,
+      2.5392535333415645e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(2048, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(2048,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.006816534638404846,
+      0.006816768169403077,
+      9.251798744150248e-06
+    ],
+    "bwd": [
+      0.0044292053480943045,
+      0.004431871891021728,
+      1.5672202752317812e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(4096, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(4096,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.013624191999435424,
+      0.01361561632156372,
+      4.098907042807022e-05
+    ],
+    "bwd": [
+      0.008877269188563028,
+      0.008887807846069335,
+      2.590028753769331e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(8192, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(8192,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.027142058849334714,
+      0.02712012767791748,
+      9.754085221144184e-05
+    ],
+    "bwd": [
+      0.017679786841074626,
+      0.017746944427490235,
+      0.000127637982043507
+    ]
+  }
+}

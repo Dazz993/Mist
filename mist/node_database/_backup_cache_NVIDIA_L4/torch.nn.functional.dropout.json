@@ -1,0 +1,146 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      1.903865633159876e-05,
+      1.8432000651955604e-05,
+      2.198622584516493e-06
+    ],
+    "bwd": [
+      6.507961516827345e-05,
+      6.246399879455566e-05,
+      1.0633743860766242e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(1, 2048, 2560), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      1.91075199842453e-05,
+      1.8943999893963337e-05,
+      1.2683458935290656e-06
+    ],
+    "bwd": [
+      6.344326307624579e-05,
+      6.246399879455566e-05,
+      2.6725678679729046e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(1, 2048, 4096), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.0304127519950268e-05,
+      1.945599913597107e-05,
+      2.234175535960271e-06
+    ],
+    "bwd": [
+      6.617583950608968e-05,
+      6.348799914121628e-05,
+      1.1499807350568833e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      1.9035840233787894e-05,
+      1.8432000651955604e-05,
+      1.6805389015961948e-06
+    ],
+    "bwd": [
+      6.332867111265658e-05,
+      6.246399879455566e-05,
+      2.744804684639747e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(2, 2048, 2560), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      1.9606079876422884e-05,
+      1.945599913597107e-05,
+      2.3543788671088822e-06
+    ],
+    "bwd": [
+      6.378719917312265e-05,
+      6.249599903821945e-05,
+      3.4219848712014044e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(2, 2048, 4096), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.145280005643144e-06,
+      2.0479999948292972e-06,
+      3.002521301220326e-07
+    ],
+    "bwd": [
+      0.00039917670321464537,
+      0.00039936000108718874,
+      5.682688090924508e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.168832008261233e-06,
+      2.0479999948292972e-06,
+      3.303507530468059e-07
+    ],
+    "bwd": [
+      0.0004010926072597504,
+      0.00040140798687934875,
+      4.209018096611477e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(4, 2048, 2560), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.147328005987219e-06,
+      2.0479999948292972e-06,
+      3.0650121213503945e-07
+    ],
+    "bwd": [
+      0.0005320663331747056,
+      0.0005314559936523438,
+      4.6621476785593324e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(4, 2048, 4096), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.1340160045074293e-06,
+      2.0479999948292972e-06,
+      2.877130547772882e-07
+    ],
+    "bwd": [
+      0.0008538531847000122,
+      0.0008540160059928894,
+      6.024194344402028e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.1821440097410227e-06,
+      2.0479999948292972e-06,
+      3.454980026028795e-07
+    ],
+    "bwd": [
+      0.0008531589143872261,
+      0.0008529919981956482,
+      5.7794290823211554e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(8, 2048, 2560), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.1626880075782536e-06,
+      2.0479999948292972e-06,
+      3.229352842932463e-07
+    ],
+    "bwd": [
+      0.0010696611877679825,
+      0.0010690560340881347,
+      6.810775316072316e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(torch.nn.functional.dropout), bounded_signature={'input': TensorSpec(shape=(8, 2048, 4096), dtype=torch.float16, requires_grad=True), 'p': 0.0, 'training': True, 'inplace': False})": {
+    "fwd": [
+      2.185216010082512e-06,
+      2.0479999948292972e-06,
+      3.4882800976500904e-07
+    ],
+    "bwd": [
+      0.0017148364824056625,
+      0.001714176058769226,
+      7.641742379357007e-06
+    ]
+  }
+}

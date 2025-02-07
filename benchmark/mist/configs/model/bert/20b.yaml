@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - /model/bert/common.yaml
+  - _self_
+
+model:
+  name: bert-20b
+  hidden_size: 6144
+  intermediate_size: 24576
+  num_hidden_layers: 44
+  num_attention_heads: 64

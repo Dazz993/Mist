@@ -1,0 +1,13 @@
+# @package _global_
+
+defaults:
+  - /model/llama/common.yaml
+  - _self_
+
+model:
+  name: llama-350m
+  hidden_size: 1024
+  intermediate_size: 2816
+  num_hidden_layers: 24
+  num_attention_heads: 16
+  num_heads_kv: ~

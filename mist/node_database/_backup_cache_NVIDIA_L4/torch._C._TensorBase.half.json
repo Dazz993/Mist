@@ -1,0 +1,62 @@
+{
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.half), bounded_signature={'self': TensorSpec(shape=(0, 50304), dtype=torch.float16, requires_grad=True), 'memory_format': torch.preserve_format})": {
+    "fwd": [
+      1.385065597575158e-05,
+      1.3311999849975109e-05,
+      1.4025309678636904e-06
+    ],
+    "bwd": [
+      5.4017215590924034e-05,
+      5.3247999399900436e-05,
+      2.223239190389964e-06
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.half), bounded_signature={'self': TensorSpec(shape=(16384, 50304), dtype=torch.float16, requires_grad=True), 'memory_format': torch.preserve_format})": {
+    "fwd": [
+      2.214912013383582e-06,
+      2.0479999948292972e-06,
+      3.782304906552511e-07
+    ],
+    "bwd": [
+      0.021165817892074584,
+      0.021163519859313966,
+      3.9672828598356916e-05
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.half), bounded_signature={'self': TensorSpec(shape=(2048, 50304), dtype=torch.float16, requires_grad=True), 'memory_format': torch.preserve_format})": {
+    "fwd": [
+      2.1780480092857027e-06,
+      2.0479999948292972e-06,
+      3.409643611034266e-07
+    ],
+    "bwd": [
+      0.0026340372512340545,
+      0.00263372802734375,
+      1.1411096948457029e-05
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.half), bounded_signature={'self': TensorSpec(shape=(4096, 50304), dtype=torch.float16, requires_grad=True), 'memory_format': torch.preserve_format})": {
+    "fwd": [
+      2.2016000120202075e-06,
+      2.0479999948292972e-06,
+      3.684977909232966e-07
+    ],
+    "bwd": [
+      0.005282224164485932,
+      0.005281792163848877,
+      1.5044783940135442e-05
+    ]
+  },
+  "NodeSpec(target_spec=MethodDescriptorSpec(torch._C._TensorBase.half), bounded_signature={'self': TensorSpec(shape=(8192, 50304), dtype=torch.float16, requires_grad=True), 'memory_format': torch.preserve_format})": {
+    "fwd": [
+      2.1954560112208128e-06,
+      2.0479999948292972e-06,
+      3.5951592565527757e-07
+    ],
+    "bwd": [
+      0.010584133654594421,
+      0.010584063529968261,
+      2.0817600164573615e-05
+    ]
+  }
+}

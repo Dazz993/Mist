@@ -1,0 +1,12 @@
+# @package _global_
+
+defaults:
+  - /model/bert/common.yaml
+  - _self_
+
+model:
+  name: bert-2.7b
+  hidden_size: 2560
+  intermediate_size: 10240
+  num_hidden_layers: 32
+  num_attention_heads: 32

@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(1, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0004747263967990876,
+      0.00047308799624443056,
+      8.73947074575634e-06
+    ],
+    "bwd": [
+      0.0012722176194190978,
+      0.0012718080282211304,
+      2.9394362586620403e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(2, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0008633344054222107,
+      0.0008657920062541962,
+      9.164087532797187e-06
+    ],
+    "bwd": [
+      0.0026052608489990233,
+      0.0026065920591354366,
+      3.3589953236650124e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(4, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.0016482303857803346,
+      0.0016501759886741638,
+      1.1802253372498189e-05
+    ],
+    "bwd": [
+      0.005230899190902709,
+      0.005230079889297485,
+      5.0175131595874536e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.flash_attn.flash_attn_qkvpacked_func), bounded_signature={'qkv': TensorSpec(shape=(8, 2048, 3, 16, 128), dtype=torch.float16, requires_grad=True), 'dropout_p': 0.0, 'softmax_scale': 0.08838834764831845, 'causal': True, 'window_size': (-1, -1), 'return_attn_probs': False})": {
+    "fwd": [
+      0.003292262411117554,
+      0.0032921600341796874,
+      7.977365973561548e-06
+    ],
+    "bwd": [
+      0.010700902462005616,
+      0.010701312065124511,
+      5.465730907332045e-06
+    ]
+  }
+}

@@ -1,0 +1,423 @@
+/usr/local/lib/python3.8/dist-packages/torch/distributed/launch.py:178: FutureWarning: The module torch.distributed.launch is deprecated
+and will be removed in future. Use torchrun.
+Note that --use_env is set by default in torchrun.
+If your script expects `--local_rank` argument to be set, please
+change it to read from `os.environ['LOCAL_RANK']` instead. See 
+https://pytorch.org/docs/stable/distributed.html#launch-utility for 
+further instructions
+
+  warnings.warn(
+WARNING:torch.distributed.run:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[FlexPipe] using world size: 64, data-parallel-size: [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]], tensor-model-parallel size: [[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]], pipeline-model-parallel size: 1 interleave-factor: 1
+using torch.float16 for parameters ...
+------------------------ arguments ------------------------
+  accumulate_allreduce_grads_in_fp32 .............. False
+  adam_beta1 ...................................... 0.9
+  adam_beta2 ...................................... 0.999
+  adam_eps ........................................ 1e-08
+  adlr_autoresume ................................. False
+  adlr_autoresume_interval ........................ 1000
+  algo_of_each_op ................................. [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+  apply_query_key_layer_scaling ................... True
+  apply_residual_connection_post_layernorm ........ False
+  attention_dropout ............................... 0.1
+  attention_softmax_in_fp32 ....................... False
+  batch_size ...................................... None
+  bert_binary_head ................................ True
+  bert_load ....................................... None
+  bf16 ............................................ False
+  bias_dropout_fusion ............................. True
+  bias_gelu_fusion ................................ True
+  biencoder_projection_dim ........................ 0
+  biencoder_shared_query_context_model ............ False
+  block_data_path ................................. None
+  checkpoint_activations .......................... [True, True, True, False, True, True, True, True, True, True, True, True, True, False, False, False]
+  checkpoint_num_layers ........................... 1
+  checkpoint_stages ............................... []
+  clip_grad ....................................... 1.0
+  consumed_train_samples .......................... 0
+  consumed_valid_samples .......................... 0
+  data_impl ....................................... mmap
+  data_parallel_size_of_each_op ................... [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+  data_path ....................................... None
+  dataloader_type ................................. single
+  DDP_impl ........................................ local
+  decoder_seq_length .............................. None
+  distribute_checkpointed_activations ............. False
+  distributed_backend ............................. nccl
+  embedding_path .................................. None
+  empty_unused_memory_level ....................... 0
+  encoder_seq_length .............................. 2048
+  eod_mask_loss ................................... False
+  eval_interval ................................... 1000
+  eval_iters ...................................... 0
+  evidence_data_path .............................. None
+  exit_duration_in_mins ........................... None
+  exit_interval ................................... None
+  ffn_hidden_size ................................. 32768
+  finetune ........................................ False
+  flexpipe_config ................................. ../logs-mist-all-a10g/aceso/configs/gpt/40B/top_configs/gpt_40B_16stages_2024-3-22-19-48-26.json
+  fp16 ............................................ True
+  fp16_lm_cross_entropy ........................... False
+  fp32_residual_connection ........................ False
+  global_batch_size ............................... 1024
+  hidden_dropout .................................. 0.1
+  hidden_size ..................................... 8192
+  hysteresis ...................................... 2
+  ict_head_size ................................... None
+  ict_load ........................................ None
+  img_dim ......................................... 224
+  indexer_batch_size .............................. 128
+  indexer_log_interval ............................ 1000
+  init_method_std ................................. 0.02
+  init_method_xavier_uniform ...................... False
+  initial_loss_scale .............................. 4294967296
+  interleave_factor ............................... 1
+  kv_channels ..................................... 128
+  layernorm_epsilon ............................... 1e-05
+  lazy_mpu_init ................................... None
+  load ............................................ None
+  local_rank ...................................... 0
+  log_batch_size_to_tensorboard ................... False
+  log_interval .................................... 1
+  log_learning_rate_to_tensorboard ................ True
+  log_loss_scale_to_tensorboard ................... True
+  log_name ........................................ gpt_40B_16stages_2024-3-22-19-48-26
+  log_num_zeros_in_grad ........................... False
+  log_params_norm ................................. False
+  log_path ........................................ ../logs-mist-all-a10g/aceso/runtime/gpt/40B/
+  log_timers_to_tensorboard ....................... False
+  log_validation_ppl_to_tensorboard ............... False
+  loss_scale ...................................... None
+  loss_scale_window ............................... 1000
+  lr .............................................. 0.00015
+  lr_decay_iters .................................. 320000
+  lr_decay_samples ................................ None
+  lr_decay_style .................................. cosine
+  lr_warmup_fraction .............................. 0.01
+  lr_warmup_iters ................................. 0
+  lr_warmup_samples ............................... 0
+  make_vocab_size_divisible_by .................... 128
+  mask_prob ....................................... 0.15
+  masked_softmax_fusion ........................... True
+  max_position_embeddings ......................... 2048
+  merge_file ...................................... vocabs/gpt2-merges.txt
+  micro_batch_size ................................ 1
+  min_loss_scale .................................. 1.0
+  min_lr .......................................... 1e-05
+  mmap_warmup ..................................... False
+  model_name ...................................... gpt
+  model_parallel_size ............................. None
+  model_parallel_size_of_each_op .................. [[4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]]
+  no_load_optim ................................... None
+  no_load_rng ..................................... None
+  no_save_optim ................................... None
+  no_save_rng ..................................... None
+  num_attention_heads ............................. 64
+  num_channels .................................... 3
+  num_classes ..................................... 1000
+  num_gpus ........................................ [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+  num_layers ...................................... 48
+  num_layers_per_virtual_pipeline_stage ........... None
+  num_ops_in_each_stage ........................... [33, 32, 23, 17, 39, 45, 41, 41, 42, 47, 44, 47, 44, 47, 42, 43]
+  num_stages ...................................... 16
+  num_workers ..................................... 2
+  onnx_safe ....................................... None
+  openai_gelu ..................................... False
+  optimizer ....................................... adam
+  override_lr_scheduler ........................... False
+  params_dtype .................................... torch.float16
+  patch_dim ....................................... 16
+  pipeline_model_parallel_size .................... 1
+  prof_cache_file ................................. None
+  prof_mbs_list ................................... None
+  prof_memory_only ................................ False
+  prof_model_name ................................. all
+  prof_model_size ................................. all
+  prof_node_rank .................................. None
+  prof_num_nodes .................................. None
+  prof_path ....................................... None
+  prof_ref_data ................................... None
+  prof_repeat_threshold ........................... None
+  prof_repeat_times ............................... [50]
+  prof_skip_running ............................... False
+  prof_time_only .................................. False
+  prof_tp_size .................................... None
+  prof_warmup_threshold ........................... None
+  prof_warmup_times ............................... 20
+  query_in_block_prob ............................. 0.1
+  rampup_batch_size ............................... None
+  rank ............................................ 0
+  recompute_ops ................................... [[0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1], [1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0], [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1], [0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0], [0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0], [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+  reset_attention_mask ............................ False
+  reset_position_ids .............................. False
+  resharding_stages ............................... [False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False]
+  retriever_report_topk_accuracies ................ []
+  retriever_score_scaling ......................... False
+  retriever_seq_length ............................ 256
+  sample_rate ..................................... 1.0
+  save ............................................ None
+  save_interval ................................... None
+  scatter_gather_tensors_in_pipeline .............. True
+  seed ............................................ 1234
+  seq_length ...................................... 2048
+  sgd_momentum .................................... 0.9
+  short_seq_prob .................................. 0.1
+  split ........................................... 949,50,1
+  tensor_model_parallel_size ...................... 1
+  tensorboard_dir ................................. None
+  tensorboard_log_interval ........................ 1
+  tensorboard_queue_size .......................... 1000
+  titles_data_path ................................ None
+  tokenizer_type .................................. GPT2BPETokenizer
+  train_iters ..................................... 3
+  train_samples ................................... None
+  use_checkpoint_lr_scheduler ..................... False
+  use_contiguous_buffers_in_ddp ................... False
+  use_cpu_initialization .......................... None
+  use_one_sent_docs ............................... False
+  virtual_pipeline_model_parallel_size ............ 1
+  vocab_extra_ids ................................. 0
+  vocab_file ...................................... vocabs/gpt2-vocab.json
+  warmup .......................................... None
+  weight_decay .................................... 0.01
+  world_size ...................................... 64
+-------------------- end of arguments ---------------------
+setting number of micro-batches to constant 1024
+> building GPT2BPETokenizer tokenizer ...
+ > padded vocab (size: 50257) with 431 dummy tokens (new size: 50688)
+> initializing torch distributed ...
+> initializing FlexPipe...
+[DEBUG]|rank 0|     pipeline_rank= 0 |     tp_size= 4 |     tp_rank=0 |     tp_src_rank=0 |     dp_size= 1 |     parent ranks=[60] |     child ranks = [4] |     args.micro_batch_size = 1
+
+> setting random seeds to 1234 ...
+[DEBUG]|rank 6|     pipeline_rank= 1 |     tp_size= 4 |     tp_rank=2 |     tp_src_rank=4 |     dp_size= 1 |     parent ranks=[2] |     child ranks = [10] |     args.micro_batch_size = 1
+
+> initializing model parallel cuda seeds on global rank 0, model parallel rank 0, and data parallel rank 0 with model parallel seed: 3952 and data parallel seed: 1234
+> compiling dataset index builder ...
+[DEBUG]|rank 2|     pipeline_rank= 0 |     tp_size= 4 |     tp_rank=2 |     tp_src_rank=0 |     dp_size= 1 |     parent ranks=[62] |     child ranks = [6] |     args.micro_batch_size = 1
+
+global_rank=6, local_rank=6
+global_rank=2, local_rank=2
+[DEBUG]|rank 3|     pipeline_rank= 0 |     tp_size= 4 |     tp_rank=3 |     tp_src_rank=0 |     dp_size= 1 |     parent ranks=[63] |     child ranks = [7] |     args.micro_batch_size = 1
+
+[DEBUG]|rank 4|     pipeline_rank= 1 |     tp_size= 4 |     tp_rank=0 |     tp_src_rank=4 |     dp_size= 1 |     parent ranks=[0] |     child ranks = [8] |     args.micro_batch_size = 1
+
+[DEBUG]|rank 1|     pipeline_rank= 0 |     tp_size= 4 |     tp_rank=1 |     tp_src_rank=0 |     dp_size= 1 |     parent ranks=[61] |     child ranks = [5] |     args.micro_batch_size = 1
+
+global_rank=3, local_rank=3
+global_rank=4, local_rank=4[DEBUG]|rank 7|     pipeline_rank= 1 |     tp_size= 4 |     tp_rank=3 |     tp_src_rank=4 |     dp_size= 1 |     parent ranks=[3] |     child ranks = [11] |     args.micro_batch_size = 1
+
+
+global_rank=1, local_rank=1
+global_rank=7, local_rank=7
+[DEBUG]|rank 5|     pipeline_rank= 1 |     tp_size= 4 |     tp_rank=1 |     tp_src_rank=4 |     dp_size= 1 |     parent ranks=[1] |     child ranks = [9] |     args.micro_batch_size = 1
+
+global_rank=5, local_rank=5
+make: Entering directory '/home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/data'
+make: Nothing to be done for 'default'.
+make: Leaving directory '/home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/data'
+>>> done with dataset index builder. Compilation time: 0.163 seconds
+global_rank=0, local_rank=0
+>>> global_rank=0 begin compiling and loading fused kernels. 
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_upper_triang_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_upper_triang_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_masked_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_masked_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/fused_kernels/build/build.ninja...
+Building extension module scaled_softmax_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module scaled_softmax_cuda...
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/zhanda/workspace/Dazzle/benchmark/superscaler/SuperScaler/runtime/megatron/fused_kernels/build/build.ninja...
+Building extension module fused_mix_prec_layer_norm_cuda...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Loading extension module fused_mix_prec_layer_norm_cuda...
+>>> global_rank=0 with compiling and loading fused kernels. 
+>>> global_rank=1 with loading fused kernels. 
+>>> global_rank=5 with loading fused kernels. 
+>>> global_rank=6 with loading fused kernels. 
+>>> global_rank=7 with loading fused kernels. 
+>>> global_rank=4 with loading fused kernels. 
+>>> global_rank=2 with loading fused kernels. 
+>>> global_rank=3 with loading fused kernels. 
+>>> done with compiling and loading fused kernels. Compilation time: 11.562 seconds
+[TIME] time to initialize megatron (seconds): 14.461
+building GPT model ...
+[rank 6 all ops] "enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2",
+[rank 6 recompute ops] enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm 
+[rank 5 all ops] "enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2",
+[rank 5 recompute ops] enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm 
+ > number of parameters on (tensor, pipeline) model parallel rank (2, 1): 553816064
+ > number of parameters on (tensor, pipeline) model parallel rank (1, 1): 553816064
+[rank 7 all ops] "enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2",
+[rank 7 recompute ops] enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm 
+ > number of parameters on (tensor, pipeline) model parallel rank (3, 1): 553816064
+[rank 4 all ops] "enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2",
+[rank 4 recompute ops] enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm 
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 1): 553816064
+
+==> Time (ms) | [stage 1, virtual 0, rank 6] | model-and-optimizer-setup: 38.75 | train/valid/test-data-iterators-setup: 78.43
+==> Time (ms) | [stage 1, virtual 0, rank 5] | model-and-optimizer-setup: 38.41 | train/valid/test-data-iterators-setup: 78.38
+
+
+==> Memory | [stage 1, virtual 0, rank 6] memory (MB) | allocated: 3168.96484375 | max allocated: 3296.32421875 | reserved: 3330.0 | max reserved: 3330.0
+==> Memory | [stage 1, virtual 0, rank 5] memory (MB) | allocated: 3168.96484375 | max allocated: 3296.32421875 | reserved: 3330.0 | max reserved: 3330.0
+
+
+==> Time (ms) | [stage 1, virtual 0, rank 7] | model-and-optimizer-setup: 43.62 | train/valid/test-data-iterators-setup: 73.32
+
+==> Memory | [stage 1, virtual 0, rank 7] memory (MB) | allocated: 3168.96484375 | max allocated: 3296.32421875 | reserved: 3330.0 | max reserved: 3330.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 4] | model-and-optimizer-setup: 44.74 | train/valid/test-data-iterators-setup: 72.65
+
+==> Memory | [stage 1, virtual 0, rank 4] memory (MB) | allocated: 3168.96484375 | max allocated: 3296.32421875 | reserved: 3330.0 | max reserved: 3330.0
+[rank 2 all ops] "encoder-embedding","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context",
+[rank 2 recompute ops] enc-attention-qkv enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-post-MLP-dropout enc-1st-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context 
+ > number of parameters on (tensor, pipeline) model parallel rank (2, 0): 573720576
+[rank 0 all ops] "encoder-embedding","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context",
+[rank 0 recompute ops] enc-attention-qkv enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-post-MLP-dropout enc-1st-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context 
+ > number of parameters on (tensor, pipeline) model parallel rank (0, 0): 573720576
+[rank 1 all ops] "encoder-embedding","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context",
+[rank 1 recompute ops] enc-attention-qkv enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-post-MLP-dropout enc-1st-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context 
+ > number of parameters on (tensor, pipeline) model parallel rank (1, 0): 573720576
+[rank 3 all ops] "encoder-embedding","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context","enc-attention-dense","enc-post-attention-dropout","enc-2nd-layernorm","enc-MLP-GEMM-1","enc-MLP-gelu","enc-MLP-GEMM-2","enc-post-MLP-dropout","enc-1st-layernorm","enc-attention-qkv","enc-attention-score","enc-attention-softmax","enc-attention-dropout","enc-attention-context",
+[rank 3 recompute ops] enc-attention-qkv enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-attention-dense enc-post-attention-dropout enc-2nd-layernorm enc-post-MLP-dropout enc-1st-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context enc-post-attention-dropout enc-2nd-layernorm enc-attention-score enc-attention-softmax enc-attention-dropout enc-attention-context 
+ > number of parameters on (tensor, pipeline) model parallel rank (3, 0): 573720576
+> learning rate decay style: cosine
+[TIME] after model, optimizer, and learning rate scheduler are built (seconds): 14.913
+> building train, validation, and test datasets ...
+ > datasets target sizes (minimum size):
+    train:      3072
+    validation: 0
+    test:       0
+[TIME] after dataloaders are built (seconds): 14.995
+done with setup ...
+
+==> Time (ms) | [stage 0, virtual 0, rank 2] | model-and-optimizer-setup: 419.76 | train/valid/test-data-iterators-setup: 113.96
+
+==> Memory | [stage 0, virtual 0, rank 2] memory (MB) | allocated: 3282.859375 | max allocated: 3378.2890625 | reserved: 3482.0 | max reserved: 3482.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 3] | model-and-optimizer-setup: 460.68 | train/valid/test-data-iterators-setup: 72.76
+
+==> Memory | [stage 0, virtual 0, rank 3] memory (MB) | allocated: 3282.859375 | max allocated: 3378.2890625 | reserved: 3482.0 | max reserved: 3482.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 1] | model-and-optimizer-setup: 451.85 | train/valid/test-data-iterators-setup: 82.02
+
+==> Memory | [stage 0, virtual 0, rank 1] memory (MB) | allocated: 3282.859375 | max allocated: 3378.2890625 | reserved: 3482.0 | max reserved: 3482.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 0] | model-and-optimizer-setup: 450.64 | train/valid/test-data-iterators-setup: 82.71
+
+==> Memory | [stage 0, virtual 0, rank 0] memory (MB) | allocated: 3282.859375 | max allocated: 3378.2890625 | reserved: 3482.0 | max reserved: 3482.0
+training ...
+
+==> Time (ms) | [stage 0, virtual 0, rank 2] | forward-compute: 98303.85 | forward-send: 6652.32 | forward-send-backward-recv: 505831.36 | backward-compute: 162448.11 | backward-recv: 4922.24 | backward-params-all-reduce: 43.48 | backward-embedding-all-reduce: 275.32 | optimizer: 435.31 | batch-generator: 256.13
+
+==> Memory | [stage 0, virtual 0, rank 2] memory (MB) | allocated: 9848.5703125 | max allocated: 15438.21484375 | reserved: 10184.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 0] | forward-compute: 98976.97 | forward-send: 5965.39 | forward-send-backward-recv: 505910.98 | backward-compute: 162407.19 | backward-recv: 4923.63 | backward-params-all-reduce: 43.83 | backward-embedding-all-reduce: 342.87 | optimizer: 369.05 | batch-generator: 237.04
+
+==> Memory | [stage 0, virtual 0, rank 0] memory (MB) | allocated: 9848.5703125 | max allocated: 15438.21484375 | reserved: 10184.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 1] | forward-compute: 97970.69 | forward-send: 6965.98 | forward-send-backward-recv: 505858.84 | backward-compute: 162441.80 | backward-recv: 4922.58 | backward-params-all-reduce: 43.70 | backward-embedding-all-reduce: 351.96 | optimizer: 362.86 | batch-generator: 250.27
+
+==> Memory | [stage 0, virtual 0, rank 1] memory (MB) | allocated: 9848.5703125 | max allocated: 15438.21484375 | reserved: 10056.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 3] | forward-compute: 100155.33 | forward-send: 4782.32 | forward-send-backward-recv: 505821.80 | backward-compute: 162419.18 | backward-recv: 4921.98 | backward-params-all-reduce: 44.59 | backward-embedding-all-reduce: 260.58 | optimizer: 453.86 | batch-generator: 265.43
+
+==> Memory | [stage 0, virtual 0, rank 3] memory (MB) | allocated: 9848.5703125 | max allocated: 15438.21484375 | reserved: 10056.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 4] | forward-compute: 209435.98 | forward-recv: 4731.49 | forward-send: 2682.31 | forward-send-backward-recv: 231370.30 | backward-compute: 289259.62 | backward-recv: 2402.91 | backward-send: 176.99 | backward-send-forward-recv: 38354.02 | backward-params-all-reduce: 68.83 | backward-embedding-all-reduce: 0.05 | optimizer: 921.96 | batch-generator: 225.80
+
+==> Memory | [stage 1, virtual 0, rank 4] memory (MB) | allocated: 9522.88671875 | max allocated: 16201.80859375 | reserved: 9690.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 7] | forward-compute: 208835.78 | forward-recv: 5804.24 | forward-send: 1610.81 | forward-send-backward-recv: 231953.79 | backward-compute: 288736.15 | backward-recv: 2529.36 | backward-send: 51.20 | backward-send-forward-recv: 38949.57 | backward-params-all-reduce: 38.72 | backward-embedding-all-reduce: 0.04 | optimizer: 961.55 | batch-generator: 222.06
+
+==> Memory | [stage 1, virtual 0, rank 7] memory (MB) | allocated: 9522.88671875 | max allocated: 16201.80859375 | reserved: 9690.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 6] | forward-compute: 209727.21 | forward-recv: 4018.48 | forward-send: 3389.61 | forward-send-backward-recv: 231094.56 | backward-compute: 289081.88 | backward-recv: 2519.41 | backward-send: 52.48 | backward-send-forward-recv: 38544.62 | backward-params-all-reduce: 59.35 | backward-embedding-all-reduce: 0.07 | optimizer: 943.94 | batch-generator: 241.88
+
+==> Memory | [stage 1, virtual 0, rank 6] memory (MB) | allocated: 9522.88671875 | max allocated: 16201.80859375 | reserved: 9690.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 5] | forward-compute: 209603.65 | forward-recv: 3727.25 | forward-send: 3686.05 | forward-send-backward-recv: 231183.62 | backward-compute: 289460.68 | backward-recv: 2406.83 | backward-send: 170.43 | backward-send-forward-recv: 38121.72 | backward-params-all-reduce: 68.91 | backward-embedding-all-reduce: 0.05 | optimizer: 926.60 | batch-generator: 238.96
+
+==> Memory | [stage 1, virtual 0, rank 5] memory (MB) | allocated: 9522.88671875 | max allocated: 16201.80859375 | reserved: 9690.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 5] | forward-compute: 196456.75 | forward-recv: 479.18 | forward-send: 104.79 | forward-send-backward-recv: 211545.43 | backward-compute: 275148.42 | backward-recv: 2613.40 | backward-send: 161.89 | backward-send-forward-recv: 35664.78 | backward-params-all-reduce: 164.44 | backward-embedding-all-reduce: 0.05 | optimizer: 369.77 | batch-generator: 233.62
+
+==> Memory | [stage 1, virtual 0, rank 5] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 11004.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 7] | forward-compute: 195630.52 | forward-recv: 452.43 | forward-send: 146.73 | forward-send-backward-recv: 212662.73 | backward-compute: 274132.52 | backward-recv: 2727.13 | backward-send: 51.43 | backward-send-forward-recv: 36464.28 | backward-params-all-reduce: 165.57 | backward-embedding-all-reduce: 0.05 | optimizer: 374.65 | batch-generator: 218.08
+
+==> Memory | [stage 1, virtual 0, rank 7] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 11008.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 6] | forward-compute: 196646.28 | forward-recv: 450.68 | forward-send: 126.30 | forward-send-backward-recv: 211523.11 | backward-compute: 274660.91 | backward-recv: 2718.96 | backward-send: 51.91 | backward-send-forward-recv: 35973.12 | backward-params-all-reduce: 167.17 | backward-embedding-all-reduce: 0.06 | optimizer: 372.75 | batch-generator: 231.99
+==> Time (ms) | [stage 1, virtual 0, rank 4] | forward-compute: 196398.90 | forward-recv: 440.78 | forward-send: 148.05 | forward-send-backward-recv: 211691.68 | backward-compute: 274975.37 | backward-recv: 2596.45 | backward-send: 180.58 | backward-send-forward-recv: 35773.57 | backward-params-all-reduce: 162.34 | backward-embedding-all-reduce: 0.06 | optimizer: 368.83 | batch-generator: 221.07
+
+
+==> Memory | [stage 1, virtual 0, rank 6] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 11004.0 | max reserved: 21250.0
+
+==> Memory | [stage 1, virtual 0, rank 4] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 11004.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 2] | forward-compute: 95394.49 | forward-send: 1878.64 | forward-send-backward-recv: 458152.97 | backward-compute: 162321.63 | backward-recv: 4706.58 | backward-params-all-reduce: 15.42 | backward-embedding-all-reduce: 208.00 | optimizer: 145.52 | batch-generator: 244.16
+
+==> Memory | [stage 0, virtual 0, rank 2] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 20242.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 1] | forward-compute: 95385.05 | forward-send: 1883.42 | forward-send-backward-recv: 458152.22 | backward-compute: 162310.04 | backward-recv: 4705.71 | backward-params-all-reduce: 15.59 | backward-embedding-all-reduce: 276.76 | optimizer: 76.38 | batch-generator: 242.24
+
+==> Memory | [stage 0, virtual 0, rank 1] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 20498.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 0] | forward-compute: 95336.65 | forward-send: 1928.97 | forward-send-backward-recv: 458206.39 | backward-compute: 162279.61 | backward-recv: 4706.44 | backward-params-all-reduce: 15.49 | backward-embedding-all-reduce: 271.96 | optimizer: 81.26 | batch-generator: 232.09
+
+==> Memory | [stage 0, virtual 0, rank 0] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 20242.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 3] | forward-compute: 95397.89 | forward-send: 1860.95 | forward-send-backward-recv: 458122.40 | backward-compute: 162286.99 | backward-recv: 4705.88 | backward-params-all-reduce: 15.61 | backward-embedding-all-reduce: 221.12 | optimizer: 132.63 | batch-generator: 260.48
+
+==> Memory | [stage 0, virtual 0, rank 3] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 20498.0 | max reserved: 21252.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 5] | forward-compute: 196304.02 | forward-recv: 708.33 | forward-send: 162.78 | forward-send-backward-recv: 202106.97 | backward-compute: 274991.50 | backward-recv: 2553.40 | backward-send: 167.72 | backward-send-forward-recv: 35703.58 | backward-params-all-reduce: 15.25 | backward-embedding-all-reduce: 0.05 | optimizer: 615.62 | batch-generator: 221.10
+
+==> Memory | [stage 1, virtual 0, rank 5] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 21074.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 1, virtual 0, rank 7] | forward-compute: 195471.11 | forward-recv: 537.58 | forward-send: 334.04 | forward-send-backward-recv: 203137.45 | backward-compute: 273951.56 | backward-recv: 2673.17 | backward-send: 52.34 | backward-send-forward-recv: 36469.12 | backward-params-all-reduce: 14.96 | backward-embedding-all-reduce: 0.05 | optimizer: 620.30 | batch-generator: 248.88
+==> Time (ms) | [stage 1, virtual 0, rank 6] | forward-compute: 196511.06 | forward-recv: 740.79 | forward-send: 120.07 | forward-send-backward-recv: 202049.76 | backward-compute: 274496.92 | backward-recv: 2668.60 | backward-send: 52.57 | backward-send-forward-recv: 35962.81 | backward-params-all-reduce: 14.90 | backward-embedding-all-reduce: 0.05 | optimizer: 620.30 | batch-generator: 228.29
+
+
+==> Time (ms) | [stage 1, virtual 0, rank 4] | forward-compute: 196264.35 | forward-recv: 699.48 | forward-send: 170.09 | forward-send-backward-recv: 202247.14 | backward-compute: 274821.85 | backward-recv: 2549.51 | backward-send: 178.15 | backward-send-forward-recv: 35766.69 | backward-params-all-reduce: 14.52 | backward-embedding-all-reduce: 0.05 | optimizer: 612.63 | batch-generator: 218.94
+==> Memory | [stage 1, virtual 0, rank 7] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 21018.0 | max reserved: 21250.0
+
+==> Memory | [stage 1, virtual 0, rank 6] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 21074.0 | max reserved: 21250.0
+
+
+==> Memory | [stage 1, virtual 0, rank 4] memory (MB) | allocated: 9522.88671875 | max allocated: 20427.08984375 | reserved: 21074.0 | max reserved: 21250.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 2] | forward-compute: 95570.10 | forward-send: 1878.73 | forward-send-backward-recv: 448294.22 | backward-compute: 162265.17 | backward-recv: 4860.41 | backward-params-all-reduce: 21.42 | backward-embedding-all-reduce: 188.31 | optimizer: 254.94 | batch-generator: 240.78
+
+==> Memory | [stage 0, virtual 0, rank 2] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 21338.0 | max reserved: 21338.0
+
+==> Time (ms) | [stage 0, virtual 0, rank 0] | forward-compute: 95480.08 | forward-send: 1961.23 | forward-send-backward-recv: 448303.25 | backward-compute: 162211.68 | backward-recv: 4860.77 | backward-params-all-reduce: 21.31 | backward-embedding-all-reduce: 217.09 | optimizer: 226.05 | batch-generator: 235.28
+==> Time (ms) | [stage 0, virtual 0, rank 1] | forward-compute: 95451.92 | forward-send: 1951.90 | forward-send-backward-recv: 448299.03 | backward-compute: 162251.99 | backward-recv: 4859.36 | backward-params-all-reduce: 129.64 | backward-embedding-all-reduce: 258.54 | optimizer: 76.32 | batch-generator: 243.95
+
+
+==> Memory | [stage 0, virtual 0, rank 0] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 21338.0 | max reserved: 21338.0
+
+==> Memory | [stage 0, virtual 0, rank 1] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 11350.0 | max reserved: 21252.0
+[TIME] after training is done (seconds): 2230.728
+
+==> Time (ms) | [stage 0, virtual 0, rank 3] | forward-compute: 95345.83 | forward-send: 2052.65 | forward-send-backward-recv: 448280.04 | backward-compute: 162216.80 | backward-recv: 4858.30 | backward-params-all-reduce: 130.12 | backward-embedding-all-reduce: 226.39 | optimizer: 108.38 | batch-generator: 251.79
+
+==> Memory | [stage 0, virtual 0, rank 3] memory (MB) | allocated: 9848.5703125 | max allocated: 19815.35546875 | reserved: 11350.0 | max reserved: 21252.0

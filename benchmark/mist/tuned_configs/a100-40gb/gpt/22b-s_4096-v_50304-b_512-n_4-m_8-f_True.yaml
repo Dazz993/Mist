@@ -1,0 +1,218 @@
+print_config: true
+ignore_warnings: true
+seed: null
+name: null
+training:
+  max_sequence_length: 4096
+  vocab_size: 50304
+  global_batch_size: 512
+  params_dtype: float16
+  exec_dtype: float16
+  optimizer_dtype: float32
+  autocast_enabled: false
+  optimizer_name: adamw
+hardware:
+  gpu_type: null
+  num_nodes: 4
+  num_gpus_per_node: 8
+  gpu_gpu_comm_params:
+  - 4.5
+  - 0.0
+  - 139.0363
+  - 0.0001
+  - 192.6217
+  - 0.0004
+  - 210.306
+  - 0.0004
+  - 1.2972
+  - 0.0015
+  - 2.6049
+  - 0.0015
+  - 5.4178
+  - 0.0014
+  - 10.7032
+  - 0.001
+  - 1.2526
+  - 0.002
+  - 2.4864
+  - 0.0021
+  - 5.2995
+  - 0.0022
+  - 10.6044
+  - 0.0019
+  - 4.5
+  - 0.0
+  - 4.5
+  - 0.0
+  - 4.5
+  - 0.0
+  - 4.5
+  - 0.0
+  cpu_gpu_comm_params:
+  - 5.3645
+  - 0.0003
+  gpu_cpu_comm_params:
+  - 5.8471
+  - 0.0002
+  interference_model_params:
+  - 1.307
+  - 2.6325
+  - 2.4097
+  - 2.5898
+  - 1.2264
+  - 2.8078
+  - 1.466
+  - 1.3202
+  - 2.2295
+  - 1.932
+  - 1.0309
+  - 1.9929
+  - 1.0438
+  - 5.4986
+  - 1.2915
+  - 1.7303
+  - 1.2856
+  - 1.0393
+  - 1.0081
+  - 1.0099
+  - 1.0125
+  - 1.0251
+  - 1.5508
+  - 1.0972
+  - 1.1336
+  - 1.2723
+  - 1.5186
+  - 1.2665
+  nvlink: true
+  memory_capacity: 40.0
+strategy:
+  enabled: true
+  layer_partitions:
+  - 11
+  - 12
+  - 12
+  - 13
+  device_assignment:
+  - - 1
+    - 8
+  - - 1
+    - 8
+  - - 1
+    - 8
+  - - 1
+    - 8
+  gradient_checkpointing:
+  - 5
+  - 4
+  - 0
+  - 0
+  gradient_accumulation_steps: 128
+  stage_strategies:
+  - - 1
+    - 4
+    - 2
+    - 0
+    - 0
+    - 1
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 1
+    - 4
+    - 2
+    - 0
+    - 0
+    - 1
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 1
+    - 4
+    - 2
+    - 0
+    - 0
+    - 1
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  - - 1
+    - 4
+    - 2
+    - 0
+    - 0
+    - 1
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  pre_post_strategy: preset
+  pre_post_strategy_array:
+  - 1
+  - 4
+  - 2
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+tuning:
+  enabled: true
+  zero_2_and_3_enabled: false
+  activation_checkpointing_tuning_enabled: true
+  state_offloading_enabled: true
+  activation_offloading_enabled: true
+  tuning_granularity: uniform-device-pp-mip
+  sample_size: 30
+  pre_post_strategy: dp
+  pre_post_strategy_array: null
+overlap: true
+use_memory_buffer: true
+nccl_timeout: 120
+profile: false
+tiny_bench: true
+memory_debug: false
+enable_advanced_opt_in_first_block: true
+disable_tp_tuning: false
+model:
+  fp32_residual_connection: false
+  fp16_lm_cross_entropy: true
+  vocab_size: 50304
+  num_tokentypes: 0
+  position_embedding_type: absolute
+  padding_idx: null
+  rotary_emb_fraction: 0.0
+  rotary_emb_base: 10000.0
+  rotary_emb_scale_base: None
+  rotary_emb_interleaved: false
+  tie_word_embeddings: false
+  add_encoder: true
+  add_decoder: false
+  encoder_attn_mask_type: causal
+  add_pooler: false
+  num_experts: null
+  parallel_block: false
+  parallel_block_tied_norm: false
+  prenorm: true
+  normalization: layernorm
+  activation_function: gelu_fast
+  mlp_type: mlp
+  qkv_proj_bias: false
+  out_proj_bias: false
+  mlp_fc1_bias: false
+  mlp_fc2_bias: false
+  hidden_dropout: 0.0
+  attention_dropout: 0.0
+  scale_attn_weights: true
+  use_flash_attn: true
+  bias_dropout_fusion: false
+  name: gpt2-22b
+  hidden_size: 6144
+  intermediate_size: 24576
+  num_hidden_layers: 48
+  num_attention_heads: 64
+  num_heads_kv: null

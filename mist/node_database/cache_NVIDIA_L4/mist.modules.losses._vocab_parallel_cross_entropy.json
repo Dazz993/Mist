@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(16384, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(16384,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.0538612735748291,
+      0.05385318374633789,
+      3.290976310682428e-05
+    ],
+    "bwd": [
+      0.014038016033172607,
+      0.014038016319274902,
+      1.7736610743393412e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(2048, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(2048,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.006898687982559204,
+      0.006897664070129395,
+      5.953295302644668e-06
+    ],
+    "bwd": [
+      0.0017942527651786805,
+      0.0017940479516983033,
+      1.0032918717855157e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(4096, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(4096,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.013627084827423095,
+      0.013623807907104492,
+      2.271361155183594e-05
+    ],
+    "bwd": [
+      0.0035345407724380494,
+      0.003534335970878601,
+      1.1264085769652604e-06
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.losses._vocab_parallel_cross_entropy), bounded_signature={'vocab_parallel_logits': TensorSpec(shape=(8192, 50304), dtype=torch.float16, requires_grad=True), 'target': TensorSpec(shape=(8192,), dtype=torch.int64, requires_grad=False), 'process_group': MistProcessGroup(world_size=1, rank=0), 'label_smoothing': 0.0})": {
+    "fwd": [
+      0.02704363536834717,
+      0.027037695884704588,
+      3.272574619443447e-05
+    ],
+    "bwd": [
+      0.007026175928115845,
+      0.00702617597579956,
+      2.1600733524388996e-06
+    ]
+  }
+}

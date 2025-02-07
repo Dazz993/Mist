@@ -1,0 +1,46 @@
+# @package _global_
+
+model:
+  # Dtypes related
+  # params_dtype would be imported from the training_config
+  fp32_residual_connection: false
+  fp16_lm_cross_entropy: true
+  # Embedding related
+  # max_position_embeddings would be imported from the training_config
+  vocab_size: 50304
+  num_tokentypes: 2
+  position_embedding_type: "absolute"
+  padding_idx: ~
+  rotary_emb_fraction: 0.0
+  rotary_emb_base: 10000.0
+  rotary_emb_scale_base: None
+  rotary_emb_interleaved: False
+  tie_word_embeddings: false
+  # Model structure related
+  add_encoder: true
+  add_decoder: false
+  encoder_attn_mask_type: "padding"
+  # decoder_attn_mask_type: "causal"  # not used
+  add_pooler: true
+  num_experts: ~
+  parallel_block: false
+  parallel_block_tied_norm: false
+  prenorm: true
+  normalization: "layernorm"
+  activation_function: "gelu_fast"
+  mlp_type: "mlp"
+  # multiple_of: 256  # not used
+  # Bias related
+  qkv_proj_bias: false
+  out_proj_bias: false
+  mlp_fc1_bias: false
+  mlp_fc2_bias: false
+  # Dropout related
+  hidden_dropout: 0.0
+  attention_dropout: 0.0
+  # Other attributes
+  scale_attn_weights: true
+  # Kernels
+  use_flash_attn: true
+  bias_dropout_fusion: false
+

@@ -1,0 +1,13 @@
+# @package _global_
+
+defaults:
+  - /model/falcon/common.yaml
+  - _self_
+
+model:
+  name: falcon-40b
+  hidden_size: 8192
+  intermediate_size: 32768
+  num_hidden_layers: 48
+  num_attention_heads: 64
+  num_heads_kv: ~

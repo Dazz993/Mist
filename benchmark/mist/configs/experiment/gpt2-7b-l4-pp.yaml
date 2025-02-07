@@ -1,0 +1,58 @@
+# @package _global_
+
+training:
+  max_sequence_length: 2048
+  vocab_size: 50304
+  global_batch_size: 128
+  params_dtype: float16
+  exec_dtype: float16
+  optimizer_dtype: float32
+  autocast_enabled: false
+  optimizer_name: adamw
+
+hardware:
+  gpu_type: null
+  num_nodes: 1
+  num_gpus_per_node: 8
+  inter_node_gpu_gpu_comm_params: [7.0013, 0.0, 9.0311, 0.0, 4.5, 0.]
+  intra_node_gpu_gpu_comm_params: [2.9834, 0.0003, 4.137, 0.0002, 4.6635, 0.0003]
+  cpu_gpu_comm_params: [5.6847, 0.0002]
+  gpu_cpu_comm_params: [6.0965, 0.0002]
+  interference_model_params: [4.5557, 2.5328, 3.0539, 2.3844, 2.2823, 1.0, 3.3137, 2.6669, 5.9904, 1.0, 1.8212, 2.8755, 1.0, 2.7186, 2.7187, 2.5355, 1.2342, 1.0188, 1.0326, 1.005, 1.0357, 1.0028, 1.3952, 1.8733, 2.2469, 1.4461, 2.3451, 1.0602]
+  nvlink: false
+  memory_capacity: 22.488
+
+strategy:
+  enabled: true
+  layer_partitions: [4, 4, 4, 4, 4, 4, 4, 4]
+  device_assignment: [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]
+  gradient_checkpointing: [4, 4, 4, 4, 4, 4, 4, 4]  # [0, 0, 0, 0, 0, 0, 0, 0]
+  gradient_accumulation_steps: 128
+  stage_strategies:
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  - [1, 1, 1, 0, 0, 1, 0, 0, 0.0, 0.0]
+  pre_post_strategy: preset
+  pre_post_strategy_array: [1, 1, 1, 0, 0, 1, 0, 0, 0, 0]
+
+
+tuning:
+  enabled: true
+  tuning_granularity: uniform-pp   # no-pp, uniform-pp, uniform-device-pp, inter-stage
+  activation_checkpointing_tuning_enabled: false
+  state_offloading_enabled: true
+  activation_offloading_enabled: true
+  pre_post_strategy: dp   # ["dp", "intra-node-tp-with-ore", "intra-node-tp-without-ore"]
+  pre_post_strategy_array: null
+
+overlap: true
+use_memory_buffer: true
+
+profile: false
+tiny_bench: true
+memory_debug: false

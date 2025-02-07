@@ -1,0 +1,17 @@
+{
+  "1.3b-s_2048-v_50304-b_32-n_1-m_2-f_True": {
+    "exec_total_cost": "8.0775",
+    "exec_stage_peak_allocated_memories": "[18678 MB, 13916 MB]",
+    "exec_stage_peak_reserved_memories": "[20654 MB, 16806 MB]"
+  },
+  "2.7b-s_2048-v_50304-b_64-n_1-m_4-f_True": {
+    "exec_total_cost": "16.0048",
+    "exec_stage_peak_allocated_memories": "[19821 MB, 15569 MB]",
+    "exec_stage_peak_reserved_memories": "[20972 MB, 17590 MB]"
+  },
+  "7b-s_2048-v_50304-b_128-n_1-m_8-f_True": {
+    "exec_total_cost": "40.4429",
+    "exec_stage_peak_allocated_memories": "[19670 MB, 20311 MB, 18685 MB, 20310 MB]",
+    "exec_stage_peak_reserved_memories": "[21810 MB, 21872 MB, 21078 MB, 21978 MB]"
+  }
+}

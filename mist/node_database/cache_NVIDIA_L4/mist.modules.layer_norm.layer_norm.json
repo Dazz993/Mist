@@ -1,0 +1,50 @@
+{
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.layer_norm.layer_norm), bounded_signature={'x': TensorSpec(shape=(1, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'bias': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'epsilon': 1e-06})": {
+    "fwd": [
+      0.0005557248055934906,
+      0.0005550079941749573,
+      1.3905677621170413e-05
+    ],
+    "bwd": [
+      0.0005556223988533021,
+      0.000560128003358841,
+      1.3059113075597944e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.layer_norm.layer_norm), bounded_signature={'x': TensorSpec(shape=(2, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'bias': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'epsilon': 1e-06})": {
+    "fwd": [
+      0.0005321727931499481,
+      0.0005329919755458832,
+      1.2600189660122722e-05
+    ],
+    "bwd": [
+      0.0004976639986038207,
+      0.0004976639896631241,
+      1.5112244007052985e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.layer_norm.layer_norm), bounded_signature={'x': TensorSpec(shape=(4, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'bias': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'epsilon': 1e-06})": {
+    "fwd": [
+      0.0005291007936000824,
+      0.0005273599922657013,
+      1.1800908751788357e-05
+    ],
+    "bwd": [
+      0.0006227967917919158,
+      0.000622079998254776,
+      1.6693390605163547e-05
+    ]
+  },
+  "NodeSpec(target_spec=FunctionSpec(mist.modules.layer_norm.layer_norm), bounded_signature={'x': TensorSpec(shape=(8, 2048, 2048), dtype=torch.float16, requires_grad=True), 'weight': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'bias': TensorSpec(shape=(2048,), dtype=torch.float16, requires_grad=True), 'epsilon': 1e-06})": {
+    "fwd": [
+      0.00054824960231781,
+      0.0005468159914016723,
+      4.075466627350983e-06
+    ],
+    "bwd": [
+      0.0009298943996429443,
+      0.0009313279986381531,
+      6.659152885452124e-06
+    ]
+  }
+}
