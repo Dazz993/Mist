@@ -27,15 +27,6 @@ RUN git clone https://github.com/NVIDIA/apex && \
     git checkout bae1f93d033716dc9115a0baf7bcda328addabe9 && \
     pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./
 
-# Install requirements
-# COPY . .
-# RUN pip install --no-cache-dir -r requirements.txt
-# RUN pip install -e .
-# RUN cd csrc/fused_dense_lib && \
-#     pip install . && \
-#     cd ../layer_norm && \
-#     pip install .
-
 # Install requirements for Megatron
 RUN apt-get install -y cmake
 RUN pip install nvidia-cudnn-cu12==8.9.7.29
@@ -43,6 +34,15 @@ ENV CUDNN_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn/
 RUN echo 'export CUDNN_PATH=/usr/local/lib/python3.10/dist-packages/nvidia/cudnn/' >> /root/.bashrc
 RUN pip install git+https://github.com/NVIDIA/TransformerEngine.git@release_v1.3
 RUN pip install pybind11
+
+# Install requirements
+COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -e .
+RUN cd csrc/fused_dense_lib && \
+    pip install . && \
+    cd ../layer_norm && \
+    pip install .
 
 # # OPENMPI
 # ENV OPENMPI_BASEVERSION=4.1
